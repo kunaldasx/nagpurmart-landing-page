@@ -1,29 +1,68 @@
 import { Facebook, Instagram, WhatsApp, X } from "@/assets/contact";
 import { Container } from "@/components/layout/Container";
-import { Heart, MessageCircle, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const companyLinks = [
-	"About Us",
-	"Founder",
-	"Careers",
-	"Contact Us",
-	"Media Kit",
+	{
+		label: "About Us",
+		link: "/about",
+	},
+	{
+		label: "Careers",
+		link: "/careers",
+	},
+	{
+		label: "Features",
+		link: "/features",
+	},
+	{
+		label: "Contact Us",
+		link: "/contact",
+	},
 ];
 
 const supportLinks = [
-	"FAQ",
-	"Shipping Policy",
-	"Return & Refund Policy",
-	"Terms & Conditions",
-	"Privacy Policy",
+	{
+		label: "FAQ",
+		link: "/faq",
+	},
+	{
+		label: "Shipping Policy",
+		link: "/shipping-policy",
+	},
+	{
+		label: "Return & Refund Policy",
+		link: "/return-and-refund-policy",
+	},
+	{
+		label: "Terms & Conditions",
+		link: "/terms-and-conditions",
+	},
+	{
+		label: "Privacy Policy",
+		link: "/privacy-policy",
+	},
 ];
 
 const legalLinks = [
-	"Terms & Conditions",
-	"Cancellation Policy",
-	"Refund Policy",
-	"Privacy Policy",
+	{
+		label: "Terms & Conditions",
+		link: "/terms-and-conditions",
+	},
+	{
+		label: "Cancellation Policy",
+		link: "/cancellation-policy",
+	},
+	{
+		label: "Refund Policy",
+		link: "/refund-policy",
+	},
+	{
+		label: "Privacy Policy",
+		link: "/privacy-policy",
+	},
 ];
 
 const socialLinks = [
@@ -33,19 +72,25 @@ const socialLinks = [
 	{ icon: X, label: "X" },
 ];
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({
+	title,
+	links,
+}: {
+	title: string;
+	links: { label: string; link: string }[];
+}) {
 	return (
 		<div>
 			<h3 className="font-semibold text-gray-900">{title}</h3>
 			<ul className="mt-4 space-y-2.5">
 				{links.map((link) => (
-					<li key={link}>
-						<a
-							href="#"
+					<li key={link.label}>
+						<Link
+							href={link.link}
 							className="text-sm text-gray-500 transition-colors hover:text-primary-foreground"
 						>
-							{link}
-						</a>
+							{link.label}
+						</Link>
 					</li>
 				))}
 			</ul>
@@ -53,7 +98,7 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
 	);
 }
 
-export function SiteFooter() {
+export function Footer() {
 	return (
 		<footer className="border-t border-gray-100 bg-white">
 			<Container>

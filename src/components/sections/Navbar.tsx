@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowDownToLine, Menu, X } from "lucide-react";
 import clsx from "clsx";
 import Image from "next/image";
-import { Container } from "./Container";
+import { Container } from "../layout/Container";
 
 const navigation = [
 	{ label: "Home", href: "/" },
