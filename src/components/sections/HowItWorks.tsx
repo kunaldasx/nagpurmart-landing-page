@@ -1,32 +1,26 @@
-/**
- * "How it works" + brand story + stats + app download + trust section
- * ---------------------------------------------------------------------
- * Recreates the supplied design — layout, type scale, and brand colors
- * match the reference. Every image and icon is a clearly-marked
- * placeholder standing in for a real asset.
- *
- * Before shipping:
- * - `npm i lucide-react` if it isn't already a dependency — every icon
- *   here is a stand-in for the final icon set.
- * - Fix the `Container` import path below if yours lives elsewhere.
- * - Replace the `ImagePlaceholder` instances (founder photo, landmark
- *   photo, QR code) with real assets, and swap the App Store / Play
- *   Store buttons for the official badge images before release — both
- *   platforms have brand guidelines for those.
- * - The Hindi copy in `OurStory` is a best-effort read of a screenshot —
- *   check it against your source copy. A few obvious typos in the
- *   reference ("Coustomers", "Familes", "Amezing", "Aoo") were corrected.
- * - Brand blue (#0061ff) and ink (#011d4c) are sampled from the design
- *   and used as one-off Tailwind arbitrary values below — worth
- *   promoting to `theme.colors.brand` in tailwind.config if you'll
- *   reuse them elsewhere on the site.
- */
-
 import { Fragment, type ComponentType } from "react";
 import clsx from "clsx";
 import { ArrowRight, QrCode } from "lucide-react";
 import { Container } from "../layout/Container";
 import Image from "next/image";
+import {
+	Step1,
+	Step2,
+	Step3,
+	Step4,
+	Step5,
+	Stat1,
+	Stat2,
+	Stat3,
+	Stat4,
+	Trust1,
+	Trust2,
+	Trust3,
+	Trust4,
+	Trust5,
+	Founder,
+	LandMark,
+} from "@/assets/howItWorks";
 
 type IconType = ComponentType<{ className?: string }>;
 
@@ -38,8 +32,7 @@ const toneClasses: Record<PlaceholderTone, string> = {
 	warm: "border-2 border-dashed border-orange-200 bg-gradient-to-br from-[#b6937e]/15 via-amber-50 to-blue-50 text-orange-300",
 };
 
-/** Stand-in for a real photo or graphic — swap for a real `<Image />` once the asset exists. */
-function ImagePlaceholder({
+function DisplayQrCode({
 	icon: Icon,
 	label,
 	tone = "blue",
@@ -74,27 +67,27 @@ function ImagePlaceholder({
 
 const steps: { icon: string; title: string; description: string }[] = [
 	{
-		icon: "/howItWorks/shopping-cart.svg",
+		icon: Step1,
 		title: "Choose Product",
 		description: "Browse from your favorite categories",
 	},
 	{
-		icon: "/howItWorks/shopping-cart.svg",
+		icon: Step2,
 		title: "Add to Cart",
 		description: "Add items to cart in one tap",
 	},
 	{
-		icon: "/howItWorks/vector.svg",
+		icon: Step3,
 		title: "Enter Address",
 		description: "Enter your delivery location",
 	},
 	{
-		icon: "/howItWorks/wallet.svg",
+		icon: Step4,
 		title: "Secure Payment",
 		description: "Pay securely using multiple options",
 	},
 	{
-		icon: "/howItWorks/truck.svg",
+		icon: Step5,
 		title: "Fast Delivery",
 		description: "Get your order at your doorstep",
 	},
@@ -153,7 +146,7 @@ export function BrandStory() {
 			<Container>
 				<div className="flex flex-col items-center gap-8 bg-blue-50 md:flex-row p-8 sm:p-10 lg:p-12">
 					<Image
-						src="/howItWorks/founder.png"
+						src={Founder}
 						alt="Founder photo"
 						width={160}
 						height={160}
@@ -216,7 +209,7 @@ export function OurStory() {
 					</div>
 
 					<Image
-						src="/howItWorks/landmark.png"
+						src={LandMark}
 						alt="Nagpur landmark photo"
 						height={160}
 						width={160}
@@ -233,10 +226,10 @@ export function OurStory() {
  * ------------------------------------------------------------------ */
 
 const stats: { icon: string; value: string; label: string }[] = [
-	{ icon: "/howItWorks/user.svg", value: "1K+", label: "Happy Customers" },
-	{ icon: "/howItWorks/package.svg", value: "1000+", label: "Products" },
-	{ icon: "/howItWorks/mapPin.svg", value: "50+", label: "Areas in Nagpur" },
-	{ icon: "/howItWorks/star.svg", value: "4.7", label: "Average Rating" },
+	{ icon: Stat1, value: "1K+", label: "Happy Customers" },
+	{ icon: Stat2, value: "1000+", label: "Products" },
+	{ icon: Stat3, value: "50+", label: "Areas in Nagpur" },
+	{ icon: Stat4, value: "4.7", label: "Average Rating" },
 ];
 
 export function StatsBar() {
@@ -317,7 +310,7 @@ export function AppDownload() {
 						</p>
 					</div>
 
-					<ImagePlaceholder
+					<DisplayQrCode
 						icon={QrCode}
 						label="QR code"
 						tone="white"
@@ -348,27 +341,27 @@ export function AppDownload() {
 
 const trustBadges: { icon: string; title: string; subtitle: string }[] = [
 	{
-		icon: "/howItWorks/trust-1.svg",
+		icon: Trust1,
 		title: "Best Prices",
 		subtitle: "Everyday",
 	},
 	{
-		icon: "/howItWorks/trust-2.svg",
+		icon: Trust2,
 		title: "Secure Payments",
 		subtitle: "100% Safe",
 	},
 	{
-		icon: "/howItWorks/trust-3.svg",
+		icon: Trust3,
 		title: "On Time Delivery",
 		subtitle: "Always",
 	},
 	{
-		icon: "/howItWorks/trust-4.svg",
+		icon: Trust4,
 		title: "Easy Returns",
 		subtitle: "Hassle Free",
 	},
 	{
-		icon: "/howItWorks/trust-5.svg",
+		icon: Trust5,
 		title: "24*7 Support",
 		subtitle: "We are Here",
 	},

@@ -1,11 +1,14 @@
 import { Container } from "../layout/Container";
 import Image from "next/image";
+import { Feature1, Feature2, Feature3, Feature4, Banner } from "@/assets/hero";
+import { AppStoreBtn } from "../ui/AppStoreBtn";
+import { PlayStoreBtn } from "../ui/PlayStoreBtn";
 
 const features = [
-	{ icon: "/hero/icon1.svg", title: "Sabse Sasta", subtitle: "Best Price" },
-	{ icon: "/hero/icon2.svg", title: "Fast Delivery", subtitle: "10–20 mins" },
-	{ icon: "/hero/icon3.svg", title: "Trusted by", subtitle: "Nagpur" },
-	{ icon: "/hero/icon4.svg", title: "24×7 Support", subtitle: "Always Here" },
+	{ icon: Feature1, title: "Sabse Sasta", subtitle: "Best Price" },
+	{ icon: Feature2, title: "Fast Delivery", subtitle: "10–20 mins" },
+	{ icon: Feature3, title: "Trusted by", subtitle: "Nagpur" },
+	{ icon: Feature4, title: "24×7 Support", subtitle: "Always Here" },
 ];
 
 export default function Hero() {
@@ -62,30 +65,8 @@ export default function Hero() {
 						</h2>
 
 						<div className="mt-6 flex flex-col gap-3 sm:flex-row">
-							<button className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56">
-								<Image
-									src="/icons/appstore.svg"
-									alt="App Store"
-									width={26}
-									height={26}
-								/>
-								<div className="flex flex-col items-start leading-2">
-									<p className="text-[12px] opacity-70">Download on the</p>
-									<p className="text-lg font-semibold">App Store</p>
-								</div>
-							</button>
-							<button className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56">
-								<Image
-									src="/icons/playstore.svg"
-									alt="Play Store"
-									width={26}
-									height={26}
-								/>
-								<div className="flex flex-col items-start leading-2">
-									<p className="text-[12px] opacity-70">Get it on</p>
-									<p className="text-lg font-semibold">Play Store</p>
-								</div>
-							</button>
+							<AppStoreBtn />
+							<PlayStoreBtn />
 						</div>
 					</div>
 
@@ -93,7 +74,7 @@ export default function Hero() {
 					<div className="order-1 flex justify-center md:order-2">
 						<div className="relative h-80 w-50 sm:h-100 sm:w-60 md:h-120 md:w-70 lg:h-150 lg:w-87.5">
 							<Image
-								src="/hero/phone.png"
+								src={Banner}
 								alt="NagpurMart App"
 								fill
 								className="object-contain"

@@ -75,14 +75,14 @@ export function Navbar() {
 						className="flex shrink-0 items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
 					>
 						<Image
-							src="/icons/logo.png"
+							src="/images/logo.png"
 							alt="NagpurMart"
 							width={40}
 							height={40}
 							priority
 						/>
 						<Image
-							src="/icons/logo-text.png"
+							src="/images/logo-text.png"
 							alt="NagpurMart"
 							width={100}
 							height={100}
