@@ -208,7 +208,7 @@ export function StatsBar() {
 								alt={stat.label}
 								width={40}
 								height={40}
-								className="h-10 w-10"
+								className="h-8 w-8 md:h-10 md:w-10"
 							/>
 							<div>
 								<p className="text-lg font-normal text-primary-foreground sm:text-xl">
@@ -350,7 +350,7 @@ export function TrustBadges() {
 								className="h-7 w-7"
 							/>
 							<div className="w-full flex flex-col items-start leading-tight">
-								<p className="text-sm font-semibold text-[#011d4c]">
+								<p className="text-sm font-semibold text-start text-[#011d4c]">
 									{badge.title}
 								</p>
 								<p className="text-xs text-slate-500">{badge.subtitle}</p>

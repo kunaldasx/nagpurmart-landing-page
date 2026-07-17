@@ -147,7 +147,7 @@ export function Footer() {
 								</a>
 							))}
 						</div>
-						<p className="mt-4 flex items-center gap-1.5 text-sm text-gray-500">
+						<p className="mt-4 flex items-center gap-1.5 text-xs text-gray-500 sm:text-sm">
 							<span>Made with</span>
 							<Heart
 								className="h-3.5 w-3.5 fill-red-500 text-red-500"
