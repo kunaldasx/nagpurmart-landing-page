@@ -1,64 +1,64 @@
+import Image from "next/image";
 import { Container } from "../layout/Container";
-
-/* Placeholder icon — swap with real icons (e.g. lucide-react) per slot */
-function IconPlaceholder({ className = "h-5 w-5" }: { className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			className={className}
-			aria-hidden="true"
-		>
-			<circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.75" />
-			<circle cx="12" cy="12" r="2.25" fill="currentColor" />
-		</svg>
-	);
-}
+import {
+	Feature1,
+	Feature2,
+	Feature3,
+	Feature4,
+	Value1,
+	Value2,
+	Value3,
+	Value4,
+	Value5,
+	BannerBg,
+	BannerPhone,
+} from "@/assets/about";
 
 interface Feature {
 	title: string;
+	icon: string;
 	subtitle: string;
 }
 
 const features: Feature[] = [
-	{ title: "Sabse Sasta", subtitle: "Best Prices" },
-	{ title: "Fast Delivery", subtitle: "10-20 Mins" },
-	{ title: "Trusted by", subtitle: "Nagpur" },
-	{ title: "24*7 Support", subtitle: "Always Here" },
-];
-
-interface Stat {
-	value: string;
-	label: string;
-}
-
-const stats: Stat[] = [
-	{ value: "1K+", label: "Happy Customers" },
-	{ value: "1000+", label: "Products" },
-	{ value: "50+", label: "Areas in Nagpur" },
-	{ value: "4.7", label: "Average Rating" },
+	{ title: "Sabse Sasta", icon: Feature1, subtitle: "Best Prices" },
+	{ title: "Fast Delivery", icon: Feature2, subtitle: "10-20 Mins" },
+	{ title: "Trusted by", icon: Feature3, subtitle: "Nagpur" },
+	{ title: "24*7 Support", icon: Feature4, subtitle: "Always Here" },
 ];
 
 interface Value {
 	title: string;
+	icon: string;
 	description: string;
 }
 
 const values: Value[] = [
 	{
 		title: "Customer First",
+		icon: Value1,
 		description: "Aapki satisfaction hamari priority hai",
 	},
 	{
 		title: "Quality Assured",
+		icon: Value2,
 		description: "Har product Quality Check ke baad",
 	},
-	{ title: "Best Prices", description: "Har din sabse sasta deals aur offers" },
+	{
+		title: "Best Prices",
+		icon: Value3,
+		description: "Har din sabse sasta deals aur offers",
+	},
 	{
 		title: "Speed & Reliability",
+		icon: Value4,
 		description: "Fast delivery, on-time delivery",
 	},
-	{ title: "Local & Proud", description: "Nagpur ka brand, Nagpur ke liye" },
+	{
+		title: "Local & Proud",
+		icon: Value5,
+		description: "Nagpur ka brand, Nagpur ke liye",
+	},
 ];
 
 function AboutHero() {
@@ -70,14 +70,14 @@ function AboutHero() {
 						About Us
 					</span>
 
-					<h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-						<span className="block text-gray-900">NagpurMart.in</span>
+					<h1 className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight">
+						<span className="block">NagpurMart.in</span>
 						<span className="block text-primary-foreground">
 							Har Zarurat, Ek App.
 						</span>
 					</h1>
 
-					<p className="mt-5 max-w-md text-sm leading-relaxed text-gray-500">
+					<p className="mt-5 max-w-md text-sm leading-relaxed text-gray-500 sm:text-base">
 						NagpurMart.in ek local super app hai jo nagpur ke logo ko groceries,
 						electronics, fashion, pharmacy aur bahut kuch best price mein,
 						fastest delivery ke saath provide karta hai.
@@ -89,8 +89,14 @@ function AboutHero() {
 								key={feature.title}
 								className="flex flex-col items-center text-center"
 							>
-								<span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-foreground text-white">
-									<IconPlaceholder className="h-5 w-5" />
+								<span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-background text-white">
+									<Image
+										src={feature.icon}
+										alt={feature.title}
+										width={28}
+										height={28}
+										className="h-8 w-8"
+									/>
 								</span>
 								<p className="mt-3 text-sm font-semibold text-gray-900">
 									{feature.title}
@@ -101,11 +107,21 @@ function AboutHero() {
 					</div>
 				</div>
 
-				<div className="aspect-[4/5] w-full overflow-hidden rounded-3xl bg-gray-100">
-					<img
-						src="https://placehold.co/720x900?text=App+Preview"
-						alt="NagpurMart app preview"
-						className="h-full w-full object-cover"
+				<div className="relative w-full aspect-[1.3/1] overflow-hidden rounded-[48px] bg-gray-100">
+					{/* Background */}
+					<Image
+						src={BannerBg}
+						alt="NagpurMart Banner"
+						fill
+						priority
+						className="object-cover"
+					/>
+
+					{/* Phone mockup */}
+					<Image
+						src={BannerPhone}
+						alt="NagpurMart mobile app"
+						className="absolute left-1/2 top-[53%] z-10 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
 					/>
 				</div>
 			</div>
@@ -115,9 +131,9 @@ function AboutHero() {
 
 function OurStory() {
 	return (
-		<Container as="section" className="py-16 sm:py-20">
+		<Container as="section" className="py-8">
 			<div className="mx-auto max-w-2xl text-center">
-				<p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+				<p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground sm:text-base">
 					Our Story
 				</p>
 				<h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -133,30 +149,13 @@ function OurStory() {
 					aur shopping ko aur easy banana.
 				</p>
 			</div>
-
-			<div className="mt-12 rounded-2xl bg-blue-50 px-6 py-8 sm:px-10">
-				<div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
-					{stats.map((stat) => (
-						<div
-							key={stat.label}
-							className="flex items-center justify-center gap-3"
-						>
-							<IconPlaceholder className="h-5 w-5 shrink-0 text-primary-foreground" />
-							<div className="text-left">
-								<p className="text-lg font-bold text-gray-900">{stat.value}</p>
-								<p className="text-xs text-gray-500">{stat.label}</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
 		</Container>
 	);
 }
 
 function OurValues() {
 	return (
-		<Container as="section" className="py-16 sm:py-20">
+		<Container as="section" className="py-8">
 			<div className="text-center">
 				<p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground">
 					What We Believe In
@@ -173,12 +172,18 @@ function OurValues() {
 						className="flex flex-col items-center text-center"
 					>
 						<span className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-primary-foreground">
-							<IconPlaceholder className="h-7 w-7" />
+							<Image
+								src={value.icon}
+								alt={value.title}
+								width={28}
+								height={28}
+								className="h-12 w-12"
+							/>
 						</span>
 						<p className="mt-4 text-sm font-semibold text-gray-900">
 							{value.title}
 						</p>
-						<p className="mt-1.5 max-w-[10rem] text-xs leading-relaxed text-gray-500">
+						<p className="mt-1.5 max-w-40 text-xs leading-normal text-gray-500">
 							{value.description}
 						</p>
 					</div>

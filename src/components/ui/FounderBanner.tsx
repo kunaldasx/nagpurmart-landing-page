@@ -62,11 +62,11 @@ function FloatingIcon({
 
 export default function FounderBanner() {
 	return (
-		<div className="relative mx-auto aspect-[4/5] w-full max-w-[400px]">
+		<div className="relative mx-auto aspect-4/5 w-full max-w-100">
 			{/* Background blob */}
 			<Image
 				src={Background}
-				alt=""
+				alt="background blob"
 				aria-hidden="true"
 				fill
 				className="pointer-events-none absolute z-0 object-contain"

@@ -1,23 +1,4 @@
-import type { ComponentType } from "react";
-import clsx from "clsx";
-import {
-	Briefcase,
-	Calendar,
-	CalendarCheck,
-	Eye,
-	LayoutGrid,
-	Lightbulb,
-	MapPin,
-	Package,
-	Quote,
-	Rocket,
-	Settings,
-	Star,
-	Target,
-	User,
-	UserRound,
-	Users,
-} from "lucide-react";
+import { Quote } from "lucide-react";
 import { Container } from "../layout/Container";
 import Image from "next/image";
 import {
@@ -34,90 +15,6 @@ import {
 } from "@/assets/founder";
 import FounderBanner from "../ui/FounderBanner";
 
-type IconType = ComponentType<{ className?: string }>;
-
-/* ------------------------------------------------------------------ *
- * Shared placeholder primitives
- * ------------------------------------------------------------------ */
-
-type BadgeTone = "blue" | "white";
-
-const badgeToneClasses: Record<BadgeTone, string> = {
-	blue: "bg-blue-100 text-primary-foreground",
-	white: "bg-white text-primary-foreground",
-};
-
-function IconBadge({
-	icon: Icon,
-	tone = "blue",
-	className,
-	iconClassName = "h-5 w-5",
-}: {
-	icon: IconType;
-	tone?: BadgeTone;
-	className?: string;
-	iconClassName?: string;
-}) {
-	return (
-		<span
-			className={clsx(
-				"flex h-11 w-11 shrink-0 items-center justify-center rounded-full",
-				badgeToneClasses[tone],
-				className,
-			)}
-		>
-			<Icon className={iconClassName} />
-		</span>
-	);
-}
-
-/** Stand-in for a real photo — swap for a real `<Image />` once the asset exists. */
-function ImagePlaceholder({
-	icon: Icon,
-	label,
-	className,
-}: {
-	icon: IconType;
-	label: string;
-	className?: string;
-}) {
-	return (
-		<div
-			role="img"
-			aria-label={label}
-			className={clsx(
-				"flex flex-col items-center justify-center gap-2 border-2 border-dashed border-primary-foreground/40 bg-blue-50 p-4 text-primary-foreground/60",
-				className,
-			)}
-		>
-			<Icon className="h-10 w-10" />
-			<span className="text-center text-xs font-medium leading-tight">
-				{label}
-			</span>
-		</div>
-	);
-}
-
-function FloatingIcon({
-	icon: Icon,
-	className,
-}: {
-	icon: IconType;
-	className?: string;
-}) {
-	return (
-		<span
-			aria-hidden="true"
-			className={clsx(
-				"absolute flex h-10 w-10 items-center justify-center rounded-full border border-blue-100 bg-white text-primary-foreground shadow-sm",
-				className,
-			)}
-		>
-			<Icon className="h-4 w-4" />
-		</span>
-	);
-}
-
 /* ------------------------------------------------------------------ *
  * 1. Founder intro
  * ------------------------------------------------------------------ */
@@ -132,28 +29,6 @@ const infoRows: { icon: string; label: string; value: string }[] = [
 	},
 ];
 
-function FounderPhoto() {
-	return (
-		<div className="relative w-full max-w-[15rem] shrink-0">
-			<div
-				aria-hidden="true"
-				className="absolute -right-6 -top-2 -z-10 h-56 w-56 rounded-full bg-blue-100"
-			/>
-
-			<ImagePlaceholder
-				icon={UserRound}
-				label="Founder photo"
-				className="aspect-[4/5] w-full rounded-[2rem]"
-			/>
-
-			<FloatingIcon icon={Settings} className="-left-4 top-6" />
-			<FloatingIcon icon={Users} className="-right-3 top-1/4" />
-			<FloatingIcon icon={LayoutGrid} className="-left-3 bottom-16" />
-			<FloatingIcon icon={Quote} className="-right-4 bottom-6" />
-		</div>
-	);
-}
-
 function FounderIntro() {
 	return (
 		<section className="py-12 sm:py-16">
@@ -166,10 +41,10 @@ function FounderIntro() {
 							</p>
 							<span className="mt-1 h-0.5 w-18 bg-primary-foreground" />
 						</div>
-						<h2 className="mt-3 text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-tight text-[#011d4c]">
+						<h2 className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight">
 							Meet Our Founder
 						</h2>
-						<p className="text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-tight text-primary-foreground">
+						<p className="text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-tight tracking-tight text-primary-foreground">
 							Abhishek Thakur
 						</p>
 						<p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base">
@@ -202,7 +77,7 @@ function FounderIntro() {
 					<div className="flex flex-col items-center justify-center gap-2 sm:flex-row">
 						<FounderBanner />
 
-						<div className="max-w-[13rem]">
+						<div className="max-w-52">
 							<Quote
 								aria-hidden="true"
 								className="h-5 w-5 -scale-x-100 text-blue-200"
@@ -260,13 +135,13 @@ const journey: {
 		title: "Growing Together",
 		description:
 			"Lakho customer ka trust jeeta aur product range aur service badhayi",
-		icon: Journey3,
+		icon: Journey4,
 	},
 	{
 		year: "2024 & Beyond",
 		title: "Bigger Vision",
 		description: "Nagpur se bharat tak, hamara mission aur bhi bada hai",
-		icon: Journey4,
+		icon: Journey5,
 	},
 ];
 
@@ -285,7 +160,7 @@ export function Journey() {
 					{/* Continuous timeline background */}
 					<div
 						aria-hidden="true"
-						className="absolute left-0 right-0 top-[75px] hidden h-0.5 bg-slate-200 lg:block"
+						className="absolute left-0 right-0 top-18.75 hidden h-0.5 bg-slate-200 lg:block"
 					/>
 
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-2">
@@ -315,7 +190,7 @@ export function Journey() {
 								</div>
 
 								{/* Card */}
-								<div className="mt-1 flex min-h-[125px] w-full flex-1 flex-col items-center rounded-xl border border-slate-200 bg-white px-3 py-4">
+								<div className="mt-1 flex min-h-31.25 w-full flex-1 flex-col items-center rounded-xl border border-slate-200 bg-white px-3 py-4">
 									<p className="text-sm font-bold text-primary-foreground">
 										{item.year}
 									</p>

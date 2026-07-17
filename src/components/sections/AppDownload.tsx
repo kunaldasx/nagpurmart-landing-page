@@ -1,4 +1,4 @@
-import { Fragment, type ComponentType } from "react";
+import { Fragment } from "react";
 import clsx from "clsx";
 import { ArrowRight, Download, QrCode } from "lucide-react";
 import {
@@ -22,56 +22,7 @@ import { Container } from "../layout/Container";
 import Image from "next/image";
 import { AppStoreBtn } from "../ui/AppStoreBtn";
 import { PlayStoreBtn } from "../ui/PlayStoreBtn";
-
-type IconType = ComponentType<{ className?: string }>;
-
-type PlaceholderTone = "blue" | "white" | "warm";
-
-const toneClasses: Record<PlaceholderTone, { fill: string; border: string }> = {
-	blue: {
-		fill: "bg-blue-50 text-primary-foreground/60",
-		border: "border-primary-foreground/40",
-	},
-	white: { fill: "bg-white text-slate-300", border: "border-slate-300" },
-	warm: {
-		fill: "bg-gradient-to-br from-orange-50 via-amber-50 to-blue-50 text-orange-300",
-		border: "border-orange-200",
-	},
-};
-
-/** Stand-in for a real photo or graphic — swap for a real `<Image />` once the asset exists. */
-function ImagePlaceholder({
-	icon: Icon,
-	label,
-	tone = "blue",
-	bordered = true,
-	className,
-}: {
-	icon: IconType;
-	label: string;
-	tone?: PlaceholderTone;
-	bordered?: boolean;
-	className?: string;
-}) {
-	const { fill, border } = toneClasses[tone];
-	return (
-		<div
-			role="img"
-			aria-label={label}
-			className={clsx(
-				"flex flex-col items-center justify-center gap-2 p-3",
-				fill,
-				bordered && clsx("border-2 border-dashed", border),
-				className,
-			)}
-		>
-			<Icon className="h-8 w-8" />
-			<span className="text-center text-[11px] font-medium leading-tight">
-				{label}
-			</span>
-		</div>
-	);
-}
+import { DisplayQrCode } from "../ui/OrCode";
 
 /* ------------------------------------------------------------------ *
  * 1. Hero
@@ -140,8 +91,8 @@ function AppHero() {
 							Download App
 						</span>
 
-						<h1 className="mt-5 text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-tight sm:text-4xl">
-							<span className="text-[#011d4c]">
+						<h1 className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight">
+							<span>
 								Nagpur<span className="text-primary-foreground">mart.in</span>{" "}
 								App
 							</span>
@@ -364,11 +315,11 @@ export function DownloadSteps() {
 						<h3 className="text-base font-bold text-white">
 							Scan & Download NagpurMart App
 						</h3>
-						<ImagePlaceholder
+						<DisplayQrCode
 							icon={QrCode}
 							label="QR code"
 							tone="white"
-							className="h-32 w-32 rounded-xl"
+							className="h-28 w-28 shrink-0 rounded-2xl"
 						/>
 						<p className="text-xs text-blue-100">
 							Scan karien aur app instantly download karien

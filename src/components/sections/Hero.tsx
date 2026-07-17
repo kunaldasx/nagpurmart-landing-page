@@ -18,7 +18,7 @@ export default function Hero() {
 				<div className="grid w-full items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
 					{/* Left */}
 					<div className="order-2 md:order-1 max-w-xl">
-						<h1 className="text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-[1.2] tracking-tight text-neutral-900">
+						<h1 className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight">
 							Nagpur Ka Apna
 							<br />
 							<span className="text-blue-700">Shopping Partner</span>
