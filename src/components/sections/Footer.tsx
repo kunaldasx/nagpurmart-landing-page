@@ -106,8 +106,15 @@ export function Footer() {
 					{/* Brand column */}
 					<div className="col-span-2 sm:col-span-3 lg:col-span-1">
 						<div className="flex items-center gap-2">
-							<span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground text-white">
-								<ShoppingCart className="h-4 w-4" aria-hidden="true" />
+							<span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground">
+								<Image
+									src="/images/logo-light.png"
+									alt="logo"
+									height={20}
+									width={20}
+									className="h-6 w-6 object-cover"
+									aria-hidden="true"
+								/>
 							</span>
 							<span className="text-lg font-bold text-gray-900">
 								nagpur<span className="text-primary-foreground">mart.in</span>

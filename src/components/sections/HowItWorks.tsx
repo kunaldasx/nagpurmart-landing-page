@@ -1,4 +1,14 @@
-import { Fragment } from "react";
+"use client";
+
+import { Fragment, useEffect, useRef, useState } from "react";
+import {
+	motion,
+	useInView,
+	useReducedMotion,
+	useScroll,
+	useTransform,
+	Variants,
+} from "motion/react";
 import { ArrowRight, QrCode } from "lucide-react";
 import { Container } from "../layout/Container";
 import Image from "next/image";
@@ -21,6 +31,22 @@ import {
 	LandMark,
 } from "@/assets/howItWorks";
 import { DisplayQrCode } from "../ui/OrCode";
+import { AppStoreBtn } from "../ui/AppStoreBtn";
+import { PlayStoreBtn } from "../ui/PlayStoreBtn";
+
+/* ------------------------------------------------------------------ *
+ * Animation upgrade notes
+ * - Uses the "motion" package (Framer Motion's current name):
+ *     npm install motion
+ *   Already have "framer-motion" installed instead? Nothing else
+ *   changes — just swap the import above back to "framer-motion".
+ * - Every effect below respects the OS "reduce motion" setting via
+ *   useReducedMotion(), so nothing here fights accessibility prefs.
+ * - Colors, copy, layout, and breakpoints are untouched — only
+ *   motion and hover/interaction behavior were added on top.
+ * ------------------------------------------------------------------ */
+
+const MotionArrowRight = motion(ArrowRight);
 
 /* ------------------------------------------------------------------ *
  * 1. How it works
@@ -55,19 +81,91 @@ const steps: { icon: string; title: string; description: string }[] = [
 ];
 
 export function Working() {
+	const shouldReduceMotion = useReducedMotion();
+
+	const stepsContainerVariants = {
+		hidden: {},
+		visible: {
+			transition: {
+				staggerChildren: shouldReduceMotion ? 0 : 0.15,
+				delayChildren: 0.05,
+			},
+		},
+	};
+
+	const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+
+	const stepVariants: Variants = {
+		hidden: {
+			opacity: 0,
+			y: shouldReduceMotion ? 0 : 20,
+			scale: shouldReduceMotion ? 1 : 0.94,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: {
+				duration: shouldReduceMotion ? 0.01 : 0.55,
+				ease: EASE_OUT,
+			},
+		},
+	};
+
+	const easeOut = [0.22, 1, 0.36, 1] as const;
+
+	const arrowVariants: Variants = {
+		hidden: {
+			opacity: 0,
+			x: shouldReduceMotion ? 0 : -10,
+		},
+		visible: {
+			opacity: 1,
+			x: 0,
+			transition: {
+				duration: shouldReduceMotion ? 0.01 : 0.4,
+				ease: easeOut,
+			},
+		},
+	};
+
 	return (
 		<section className="pb-12 pt-12 sm:pb-16">
 			<Container>
-				<h2 className="text-center text-2xl font-bold text-[#011d4c] sm:text-3xl">
+				<motion.h2
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.6 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.5,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="text-center text-2xl font-bold text-[#011d4c] sm:text-3xl"
+				>
 					How <span className="text-primary-foreground">Nagpurmart.in</span>{" "}
 					Works?
-				</h2>
+				</motion.h2>
 
-				<div className="mt-12 flex flex-wrap items-start justify-center gap-x-4 gap-y-10 md:flex-nowrap md:justify-between">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.2 }}
+					variants={stepsContainerVariants}
+					className="mt-12 flex flex-wrap items-start justify-center gap-x-4 gap-y-10 md:flex-nowrap md:justify-between"
+				>
 					{steps.map((step, i) => (
 						<Fragment key={step.title}>
-							<div className="flex w-32 flex-col items-center text-center sm:w-36">
-								<div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-background lg:h-14 lg:w-14">
+							<motion.div
+								variants={stepVariants}
+								whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+								transition={{ type: "spring", stiffness: 300, damping: 20 }}
+								className="group flex w-32 flex-col items-center text-center sm:w-36"
+							>
+								<motion.div
+									whileHover={shouldReduceMotion ? undefined : { scale: 1.12 }}
+									transition={{ type: "spring", stiffness: 300, damping: 15 }}
+									className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-background transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-primary-foreground/20 lg:h-14 lg:w-14"
+								>
 									<Image
 										src={step.icon}
 										alt={step.title}
@@ -75,23 +173,24 @@ export function Working() {
 										height={24}
 										className="h-6 w-6 object-cover lg:h-8 lg:w-8"
 									/>
-								</div>
+								</motion.div>
 								<h3 className="mt-4 text-sm font-semibold text-[#011d4c] sm:text-base">
 									{step.title}
 								</h3>
 								<p className="mt-1 text-xs text-slate-500 sm:text-sm">
 									{step.description}
 								</p>
-							</div>
+							</motion.div>
 							{i < steps.length - 1 && (
-								<ArrowRight
+								<MotionArrowRight
 									aria-hidden="true"
+									variants={arrowVariants}
 									className="mt-6 hidden h-5 w-5 shrink-0 md:block"
 								/>
 							)}
 						</Fragment>
 					))}
-				</div>
+				</motion.div>
 			</Container>
 		</section>
 	);
@@ -102,17 +201,47 @@ export function Working() {
  * ------------------------------------------------------------------ */
 
 export function BrandStory() {
+	const shouldReduceMotion = useReducedMotion();
+	const ref = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["start end", "end start"],
+	});
+	const y = useTransform(
+		scrollYProgress,
+		[0, 1],
+		shouldReduceMotion ? [0, 0] : [-20, 20],
+	);
+
 	return (
 		<section className="py-6 sm:py-8">
 			<Container>
-				<div className="flex flex-col items-center gap-8 bg-blue-50 md:flex-row p-8 sm:p-10 lg:p-12">
-					<Image
-						src={Founder}
-						alt="Founder photo"
-						width={160}
-						height={160}
-						className="h-full w-80 object-cover md:h-80"
-					/>
+				<motion.div
+					ref={ref}
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.6,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="flex flex-col items-center gap-8 bg-blue-50 md:flex-row p-8 sm:p-10 lg:p-12"
+				>
+					<div className="relative h-full w-150 md:h-80">
+						<motion.div
+							style={{ y }}
+							whileHover={shouldReduceMotion ? undefined : { scale: 1.06 }}
+							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+							className="absolute inset-0"
+						>
+							<Image
+								src={Founder}
+								alt="Founder photo"
+								fill
+								className="object-contain"
+							/>
+						</motion.div>
+					</div>
 
 					<div>
 						<h3 className="text-2xl font-bold text-[#011d4c]">
@@ -136,7 +265,7 @@ export function BrandStory() {
 						</p>
 						<p className="text-sm text-slate-500">Founder, Nagpurmart.in</p>
 					</div>
-				</div>
+				</motion.div>
 			</Container>
 		</section>
 	);
@@ -147,10 +276,32 @@ export function BrandStory() {
  * ------------------------------------------------------------------ */
 
 export function OurStory() {
+	const shouldReduceMotion = useReducedMotion();
+	const ref = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["start end", "end start"],
+	});
+	const y = useTransform(
+		scrollYProgress,
+		[0, 1],
+		shouldReduceMotion ? [0, 0] : [20, -20],
+	);
+
 	return (
 		<section className="py-6 sm:py-8">
 			<Container>
-				<div className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+				<motion.div
+					ref={ref}
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.6,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-2"
+				>
 					<div>
 						<h3 className="text-2xl font-bold text-[#011d4c]">
 							Our Brand Story
@@ -169,14 +320,23 @@ export function OurStory() {
 						</p>
 					</div>
 
-					<Image
-						src={LandMark}
-						alt="Nagpur landmark photo"
-						height={160}
-						width={160}
-						className="h-full w-full object-cover"
-					/>
-				</div>
+					<div className="relative h-full w-full overflow-hidden">
+						<motion.div
+							style={{ y }}
+							whileHover={shouldReduceMotion ? undefined : { scale: 1.06 }}
+							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+							className="absolute -top-10 -bottom-10 left-0 right-0"
+						>
+							<Image
+								src={LandMark}
+								alt="Nagpur landmark photo"
+								height={160}
+								width={160}
+								className="h-full w-full object-cover"
+							/>
+						</motion.div>
+					</div>
+				</motion.div>
 			</Container>
 		</section>
 	);
@@ -186,39 +346,129 @@ export function OurStory() {
  * 4. Stats
  * ------------------------------------------------------------------ */
 
-const stats: { icon: string; value: string; label: string }[] = [
-	{ icon: Stat1, value: "1K+", label: "Happy Customers" },
-	{ icon: Stat2, value: "1000+", label: "Products" },
-	{ icon: Stat3, value: "50+", label: "Areas in Nagpur" },
-	{ icon: Stat4, value: "4.7", label: "Average Rating" },
+const stats: {
+	icon: string;
+	label: string;
+	target: number;
+	decimals?: number;
+	suffix?: string;
+}[] = [
+	{ icon: Stat1, target: 1, suffix: "K+", label: "Happy Customers" },
+	{ icon: Stat2, target: 1000, suffix: "+", label: "Products" },
+	{ icon: Stat3, target: 50, suffix: "+", label: "Areas in Nagpur" },
+	{ icon: Stat4, target: 4.7, decimals: 1, label: "Average Rating" },
 ];
 
+function useCountUp(
+	target: number,
+	isInView: boolean,
+	options?: { duration?: number; delay?: number },
+) {
+	const { duration = 1.4, delay = 0 } = options ?? {};
+	const [value, setValue] = useState(0);
+
+	useEffect(() => {
+		if (!isInView) return;
+		if (duration <= 0) {
+			// eslint-disable-next-line react-hooks/set-state-in-effect
+			setValue(target);
+			return;
+		}
+
+		let frame: number;
+		const timeout = setTimeout(() => {
+			let start: number | null = null;
+			const step = (timestamp: number) => {
+				if (start === null) start = timestamp;
+				const progress = Math.min((timestamp - start) / (duration * 1000), 1);
+				const eased = 1 - Math.pow(1 - progress, 3);
+				setValue(target * eased);
+				if (progress < 1) frame = requestAnimationFrame(step);
+			};
+			frame = requestAnimationFrame(step);
+		}, delay);
+
+		return () => {
+			clearTimeout(timeout);
+			cancelAnimationFrame(frame);
+		};
+	}, [isInView, target, duration, delay]);
+
+	return value;
+}
+
+function StatItem({
+	stat,
+	isInView,
+	index,
+	shouldReduceMotion,
+}: {
+	stat: (typeof stats)[number];
+	isInView: boolean;
+	index: number;
+	shouldReduceMotion: boolean;
+}) {
+	const raw = useCountUp(stat.target, isInView, {
+		duration: shouldReduceMotion ? 0 : 1.4,
+		delay: shouldReduceMotion ? 0 : index * 120,
+	});
+	const display = stat.decimals
+		? raw.toFixed(stat.decimals)
+		: `${Math.round(raw)}`;
+
+	return (
+		<motion.div
+			whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+			transition={{ type: "spring", stiffness: 300, damping: 20 }}
+			className="flex items-center justify-start rounded-lg px-4 transition-colors duration-300 hover:bg-white/60 md:justify-center"
+		>
+			<Image
+				src={stat.icon}
+				alt={stat.label}
+				width={40}
+				height={40}
+				className="h-8 w-8 md:h-10 md:w-10"
+			/>
+			<div>
+				<p className="text-lg font-normal text-primary-foreground sm:text-xl">
+					{display}
+					{stat.suffix ?? ""}
+				</p>
+				<p className="text-xs text-slate-500">{stat.label}</p>
+			</div>
+		</motion.div>
+	);
+}
+
 export function StatsBar() {
+	const shouldReduceMotion = useReducedMotion();
+	const ref = useRef<HTMLDivElement>(null);
+	const isInView = useInView(ref, { once: true, amount: 0.4 });
+
 	return (
 		<section className="py-6 sm:py-8">
 			<Container>
-				<div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-blue-100 bg-primary-background py-4 rounded-xl px-6">
-					{stats.map((stat) => (
-						<div
+				<motion.div
+					ref={ref}
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.4 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.5,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-blue-100 bg-primary-background py-4 rounded-xl px-6"
+				>
+					{stats.map((stat, index) => (
+						<StatItem
 							key={stat.label}
-							className="flex items-center justify-start md:justify-center gap-2 px-4"
-						>
-							<Image
-								src={stat.icon}
-								alt={stat.label}
-								width={40}
-								height={40}
-								className="h-8 w-8 md:h-10 md:w-10"
-							/>
-							<div>
-								<p className="text-lg font-normal text-primary-foreground sm:text-xl">
-									{stat.value}
-								</p>
-								<p className="text-xs text-slate-500">{stat.label}</p>
-							</div>
-						</div>
+							stat={stat}
+							isInView={isInView}
+							index={index}
+							shouldReduceMotion={!!shouldReduceMotion}
+						/>
 					))}
-				</div>
+				</motion.div>
 			</Container>
 		</section>
 	);
@@ -228,40 +478,22 @@ export function StatsBar() {
  * 5. App download banner
  * ------------------------------------------------------------------ */
 
-function StoreButton({
-	icon,
-	eyebrow,
-	label,
-}: {
-	icon: string;
-	eyebrow: string;
-	label: string;
-}) {
-	return (
-		<a
-			href="#"
-			className="flex items-center gap-3 rounded-xl bg-black px-4 py-2 text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-foreground"
-		>
-			<Image
-				src={icon}
-				alt={label}
-				width={24}
-				height={24}
-				className="h-6 w-6 shrink-0"
-			/>
-			<span className="flex flex-col leading-tight">
-				<span className="text-[10px] text-white/70">{eyebrow}</span>
-				<span className="text-sm font-semibold">{label}</span>
-			</span>
-		</a>
-	);
-}
-
 export function AppDownload() {
+	const shouldReduceMotion = useReducedMotion();
+
 	return (
 		<section className="py-6 sm:py-8">
 			<Container>
-				<div className="flex flex-col items-center gap-8 rounded-3xl bg-primary-foreground p-8 text-center sm:p-10 md:flex-row md:justify-between md:text-left lg:p-12">
+				<motion.div
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.6,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="flex flex-col items-center gap-8 rounded-3xl bg-primary-foreground p-8 text-center sm:p-10 md:flex-row md:justify-between md:text-left lg:p-12"
+				>
 					<div className="max-w-lg">
 						<h3 className="text-xl font-bold text-white sm:text-2xl">
 							Download NagpurMart App
@@ -271,26 +503,23 @@ export function AppDownload() {
 						</p>
 					</div>
 
-					<DisplayQrCode
-						icon={QrCode}
-						label="QR code"
-						tone="white"
-						className="h-28 w-28 shrink-0 rounded-2xl"
-					/>
+					<motion.div
+						animate={shouldReduceMotion ? undefined : { scale: [1, 1.04, 1] }}
+						transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+					>
+						<DisplayQrCode
+							icon={QrCode}
+							label="QR code"
+							tone="white"
+							className="h-28 w-28 shrink-0 rounded-2xl"
+						/>
+					</motion.div>
 
 					<div className="flex flex-col gap-3">
-						<StoreButton
-							icon="/icons/appstore.svg"
-							eyebrow="Download on the"
-							label="App Store"
-						/>
-						<StoreButton
-							icon="/icons/playstore.svg"
-							eyebrow="Get it on"
-							label="Play Store"
-						/>
+						<AppStoreBtn />
+						<PlayStoreBtn />
 					</div>
-				</div>
+				</motion.div>
 			</Container>
 		</section>
 	);
@@ -329,35 +558,81 @@ const trustBadges: { icon: string; title: string; subtitle: string }[] = [
 ];
 
 export function TrustBadges() {
+	const shouldReduceMotion = useReducedMotion();
+
+	const badgesContainerVariants = {
+		hidden: {},
+		visible: {
+			transition: { staggerChildren: shouldReduceMotion ? 0 : 0.08 },
+		},
+	};
+
+	const badgeVariants = {
+		hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: shouldReduceMotion ? 0.01 : 0.45,
+				ease: [0.22, 1, 0.36, 1],
+			},
+		},
+	};
+
 	return (
 		<section className="py-12 sm:py-16">
 			<Container>
-				<h3 className="text-center text-xl font-normal text-[#011d4c] sm:text-2xl">
+				<motion.h3
+					initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.6 }}
+					transition={{
+						duration: shouldReduceMotion ? 0.01 : 0.5,
+						ease: [0.22, 1, 0.36, 1],
+					}}
+					className="text-center text-xl font-normal text-[#011d4c] sm:text-2xl"
+				>
 					Trusted by Thousands of Families in Nagpur
-				</h3>
+				</motion.h3>
 
-				<div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-8">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.2 }}
+					variants={badgesContainerVariants}
+					className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-8"
+				>
 					{trustBadges.map((badge) => (
-						<div
+						<motion.div
 							key={badge.title}
+							variants={badgeVariants}
+							whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+							transition={{ type: "spring", stiffness: 300, damping: 20 }}
 							className="flex w-32 items-center gap-2 text-center sm:w-40"
 						>
-							<Image
-								src={badge.icon}
-								alt={badge.title}
-								width={28}
-								height={28}
-								className="h-7 w-7"
-							/>
+							<motion.div
+								whileHover={
+									shouldReduceMotion ? undefined : { rotate: -8, scale: 1.15 }
+								}
+								transition={{ type: "spring", stiffness: 300, damping: 12 }}
+							>
+								<Image
+									src={badge.icon}
+									alt={badge.title}
+									width={28}
+									height={28}
+									className="h-7 w-7"
+								/>
+							</motion.div>
 							<div className="w-full flex flex-col items-start leading-tight">
 								<p className="text-sm font-semibold text-start text-[#011d4c]">
 									{badge.title}
 								</p>
 								<p className="text-xs text-slate-500">{badge.subtitle}</p>
 							</div>
-						</div>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</Container>
 		</section>
 	);

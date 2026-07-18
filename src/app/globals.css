@@ -32,3 +32,21 @@ h2,
 h3 {
 	font-family: var(--font-sheading);
 }
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+.animate-float {
+	animation: float 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+	.animate-float {
+		animation: none;
+	}
+}
