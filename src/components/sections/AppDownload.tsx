@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useState } from "react";
 import clsx from "clsx";
-import { ArrowRight, Download, QrCode } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import {
 	Feature1,
 	Feature2,
@@ -556,12 +556,7 @@ export function DownloadSteps() {
 							Scan & Download NagpurMart App
 						</h3>
 						<div className="nm-pulse-ring rounded-2xl">
-							<DisplayQrCode
-								icon={QrCode}
-								label="QR code"
-								tone="white"
-								className="h-28 w-28 shrink-0 rounded-2xl"
-							/>
+							<DisplayQrCode />
 						</div>
 						<p className="text-xs text-blue-100">
 							Scan karien aur app instantly download karien

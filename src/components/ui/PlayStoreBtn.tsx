@@ -1,8 +1,13 @@
+import { APPSTORE_URL } from "@/constants";
 import Image from "next/image";
 
 export const PlayStoreBtn = () => {
 	return (
-		<button className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56">
+		<a
+			href={APPSTORE_URL}
+			target="_blank"
+			className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56"
+		>
 			<Image
 				src="/icons/playstore.svg"
 				alt="Play Store"
@@ -13,6 +18,6 @@ export const PlayStoreBtn = () => {
 				<p className="text-[12px] opacity-70">Get it on</p>
 				<p className="text-lg font-semibold">Play Store</p>
 			</div>
-		</button>
+		</a>
 	);
 };

@@ -6,6 +6,7 @@ import { ChevronDown, Send } from "lucide-react";
 import { Contact1, Contact2, Contact3, Contact4 } from "@/assets/contact";
 import Image from "next/image";
 import { useState } from "react";
+import { SUPPORT_EMAIL, SUPPORT_PHONE } from "@/constants";
 
 interface ContactMethod {
 	icon: string;
@@ -17,12 +18,12 @@ const contactMethods: ContactMethod[] = [
 	{
 		icon: Contact1,
 		title: "Call Us",
-		lines: ["+1234567890", "Mon - Fri, 9:00 AM - 6PM"],
+		lines: [SUPPORT_PHONE, "Mon - Fri, 9:00 AM - 6PM"],
 	},
 	{
 		icon: Contact2,
 		title: "Email Us",
-		lines: ["support@nagpurmart.in", "We reply within 24 hours"],
+		lines: [`+91 ${SUPPORT_EMAIL}`, "We reply within 24 hours"],
 	},
 	{
 		icon: Contact3,
@@ -80,7 +81,7 @@ export function ContactHero() {
 ${form.message}`;
 
 		window.open(
-			`https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`,
+			`https://wa.me/91${SUPPORT_PHONE}?text=${encodeURIComponent(whatsappMessage)}`,
 			"_blank",
 		);
 
@@ -92,6 +93,7 @@ ${form.message}`;
 			message: "",
 		});
 	};
+
 	return (
 		<section className="py-16 sm:py-20">
 			<Container>

@@ -1,13 +1,18 @@
+import { APPSTORE_URL } from "@/constants";
 import Image from "next/image";
 
 export const AppStoreBtn = () => {
 	return (
-		<button className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56">
+		<a
+			href={APPSTORE_URL}
+			target="_blank"
+			className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-black cursor-pointer text-white transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:w-56"
+		>
 			<Image src="/icons/appstore.svg" alt="App Store" width={26} height={26} />
 			<div className="flex flex-col items-start leading-2">
 				<p className="text-[12px] opacity-70">Download on the</p>
 				<p className="text-lg font-semibold">App Store</p>
 			</div>
-		</button>
+		</a>
 	);
 };

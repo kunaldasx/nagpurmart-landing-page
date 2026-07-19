@@ -9,7 +9,7 @@ import {
 	useTransform,
 	Variants,
 } from "motion/react";
-import { ArrowRight, QrCode } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "../layout/Container";
 import Image from "next/image";
 import {
@@ -33,18 +33,6 @@ import {
 import { DisplayQrCode } from "../ui/OrCode";
 import { AppStoreBtn } from "../ui/AppStoreBtn";
 import { PlayStoreBtn } from "../ui/PlayStoreBtn";
-
-/* ------------------------------------------------------------------ *
- * Animation upgrade notes
- * - Uses the "motion" package (Framer Motion's current name):
- *     npm install motion
- *   Already have "framer-motion" installed instead? Nothing else
- *   changes — just swap the import above back to "framer-motion".
- * - Every effect below respects the OS "reduce motion" setting via
- *   useReducedMotion(), so nothing here fights accessibility prefs.
- * - Colors, copy, layout, and breakpoints are untouched — only
- *   motion and hover/interaction behavior were added on top.
- * ------------------------------------------------------------------ */
 
 const MotionArrowRight = motion(ArrowRight);
 
@@ -503,17 +491,9 @@ export function AppDownload() {
 						</p>
 					</div>
 
-					<motion.div
-						animate={shouldReduceMotion ? undefined : { scale: [1, 1.04, 1] }}
-						transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-					>
-						<DisplayQrCode
-							icon={QrCode}
-							label="QR code"
-							tone="white"
-							className="h-28 w-28 shrink-0 rounded-2xl"
-						/>
-					</motion.div>
+					<div className="nm-pulse-ring rounded-2xl">
+						<DisplayQrCode />
+					</div>
 
 					<div className="flex flex-col gap-3">
 						<AppStoreBtn />
@@ -574,7 +554,7 @@ export function TrustBadges() {
 			y: 0,
 			transition: {
 				duration: shouldReduceMotion ? 0.01 : 0.45,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1] as const,
 			},
 		},
 	};

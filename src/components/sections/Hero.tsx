@@ -17,6 +17,7 @@ import { AppStoreBtn } from "../ui/AppStoreBtn";
 import { PlayStoreBtn } from "../ui/PlayStoreBtn";
 import Lottie from "lottie-react";
 import groceryAnimation from "@/assets/animations/grocery-lottie.json";
+import { FLOATING_ITEMS, FloatingIcon, HeroBlob } from "../ui/HeroDecor";
 
 const features = [
 	{ icon: Feature1, title: "Sabse Sasta", subtitle: "Best Price" },
@@ -57,7 +58,8 @@ export default function Hero() {
 	});
 	const bannerY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 90]);
 
-	// Mouse-tilt parallax on the banner
+	// Mouse-tilt parallax for the whole banner scene — the phone tilts and
+	// the floating icons drift with it, read off the same mouseX/mouseY.
 	const mouseX = useMotionValue(0);
 	const mouseY = useMotionValue(0);
 	const rotateX = useSpring(
@@ -199,22 +201,42 @@ export default function Hero() {
 						}}
 						className="order-1 flex justify-center md:order-2"
 					>
-						<motion.div
+						<div
 							onMouseMove={handleMouseMove}
 							onMouseLeave={handleMouseLeave}
-							animate={reduced ? undefined : { y: [0, -14, 0] }}
-							transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-							style={{ rotateX, rotateY, transformPerspective: 1000 }}
-							className="relative h-80 w-50 sm:h-100 sm:w-60 md:h-120 md:w-70 lg:h-150 lg:w-87.5"
+							className="relative flex items-center justify-center"
 						>
-							<Image
-								src={Banner}
-								alt="NagpurMart App"
-								fill
-								className="object-contain"
-								priority
-							/>
-						</motion.div>
+							<HeroBlob reduced={reduced} />
+
+							{FLOATING_ITEMS.map((item) => (
+								<FloatingIcon
+									key={item.id}
+									item={item}
+									reduced={reduced}
+									mouseX={mouseX}
+									mouseY={mouseY}
+								/>
+							))}
+
+							<motion.div
+								animate={reduced ? undefined : { y: [0, -14, 0] }}
+								transition={{
+									duration: 4,
+									repeat: Infinity,
+									ease: "easeInOut",
+								}}
+								style={{ rotateX, rotateY, transformPerspective: 1000 }}
+								className="relative z-10 h-80 w-50 sm:h-100 sm:w-60 md:h-120 md:w-70 lg:h-150 lg:w-87.5"
+							>
+								<Image
+									src={Banner}
+									alt="NagpurMart App"
+									fill
+									className="object-contain"
+									priority
+								/>
+							</motion.div>
+						</div>
 					</motion.div>
 				</div>
 			</Container>

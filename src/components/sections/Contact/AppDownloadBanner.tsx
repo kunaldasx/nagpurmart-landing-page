@@ -3,7 +3,6 @@ import { Container } from "@/components/layout/Container";
 import { AppStoreBtn } from "@/components/ui/AppStoreBtn";
 import { DisplayQrCode } from "@/components/ui/OrCode";
 import { PlayStoreBtn } from "@/components/ui/PlayStoreBtn";
-import { QrCode } from "lucide-react";
 import Image from "next/image";
 
 export function AppDownloadBanner() {
@@ -32,12 +31,9 @@ export function AppDownloadBanner() {
 					</div>
 					{/* QR + store badges */}
 					<div className="flex items-center gap-4">
-						<DisplayQrCode
-							icon={QrCode}
-							label="QR code"
-							tone="white"
-							className="h-28 w-28 shrink-0 rounded-2xl"
-						/>
+						<div className="nm-pulse-ring rounded-2xl">
+							<DisplayQrCode />
+						</div>
 
 						<div className="flex flex-col gap-2">
 							<AppStoreBtn />

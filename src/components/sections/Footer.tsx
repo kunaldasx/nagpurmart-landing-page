@@ -2,6 +2,7 @@
 
 import { Facebook, Instagram, WhatsApp, X } from "@/assets/footer";
 import { Container } from "@/components/layout/Container";
+import { APPSTORE_URL, SUPPORT_PHONE } from "@/constants";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -68,10 +69,14 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-	{ icon: WhatsApp, label: "WhatsApp" },
-	{ icon: Facebook, label: "Facebook" },
-	{ icon: Instagram, label: "Instagram" },
-	{ icon: X, label: "X" },
+	{
+		icon: WhatsApp,
+		link: `https://wa.me/91${SUPPORT_PHONE}`,
+		label: "WhatsApp",
+	},
+	{ icon: Facebook, link: APPSTORE_URL, label: "Facebook" },
+	{ icon: Instagram, link: APPSTORE_URL, label: "Instagram" },
+	{ icon: X, link: APPSTORE_URL, label: "X" },
 ];
 
 function FooterColumn({
@@ -101,6 +106,15 @@ function FooterColumn({
 }
 
 export function Footer() {
+	// const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	// 	e.preventDefault();
+
+	// 	window.open(
+	// 		`https://wa.me/91${SUPPORT_PHONE}?text=${encodeURIComponent(whatsappMessage)}`,
+	// 		"_blank",
+	// 	);
+	// };
+
 	return (
 		<footer className="border-t border-gray-100">
 			<Container>
@@ -136,10 +150,11 @@ export function Footer() {
 					<div>
 						<h3 className="font-semibold text-gray-900">Follow Us</h3>
 						<div className="mt-4 flex items-center gap-3">
-							{socialLinks.map(({ icon: Icon, label }) => (
+							{socialLinks.map(({ icon: Icon, link, label }) => (
 								<a
 									key={label}
-									href="#"
+									href={link}
+									target="_blank"
 									aria-label={label}
 									className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-primary-background hover:text-primary-foreground"
 								>
