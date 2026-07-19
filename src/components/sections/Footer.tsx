@@ -1,13 +1,10 @@
 "use client";
 
-import { Facebook, Instagram, WhatsApp, X, FooterBg } from "@/assets/footer";
+import { Facebook, Instagram, WhatsApp, X } from "@/assets/footer";
 import { Container } from "@/components/layout/Container";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
-import { useWindowSize } from "@/hooks/useWindowSize";
 
 const companyLinks = [
 	{
@@ -104,34 +101,6 @@ function FooterColumn({
 }
 
 export function Footer() {
-	const windowSize = useWindowSize();
-	const [animateToX, setAnimateToX] = useState(0);
-
-	useEffect(() => {
-		// Calculate the distance to animate based on screen width
-		// Subtracting the element width to ensure it stops at the edge
-		const imageWidth = {
-			xs: 56, // w-14 (14 * 4px)
-			sm: 96, // w-24 (24 * 4px)
-			md: 128, // w-32 (32 * 4px)
-			lg: 160, // w-40 (40 * 4px)
-		};
-
-		// Determine which image width to use based on screen size
-		let currentWidth = imageWidth.xs - 50;
-		if (windowSize.width >= 1024) {
-			currentWidth = imageWidth.lg - 100;
-		} else if (windowSize.width >= 768) {
-			currentWidth = imageWidth.md - 100;
-		} else if (windowSize.width >= 640) {
-			currentWidth = imageWidth.sm;
-		}
-
-		// Calculate animation endpoint to be exactly the right edge of the screen
-		// eslint-disable-next-line react-hooks/set-state-in-effect
-		setAnimateToX(windowSize.width - currentWidth);
-	}, [windowSize]);
-
 	return (
 		<footer className="border-t border-gray-100">
 			<Container>
@@ -194,29 +163,6 @@ export function Footer() {
 							<span>in Nagpur</span>
 						</p>
 					</div>
-
-					{/* Animation */}
-					{/* <Image
-						src={FooterBg}
-						className="absolute bottom-0 w-full object-cover -z-10 bg-blend-darken"
-						alt=""
-					/>
-					<motion.img
-						animate={{
-							x: [-150, animateToX],
-						}}
-						transition={{
-							x: {
-								duration: 20,
-								ease: "linear",
-								repeat: Infinity,
-								repeatType: "loop",
-							},
-						}}
-						src={DeliveryBoy}
-						className="w-14 sm:w-24 md:w-32 lg:w-40 absolute -bottom-1 left-0 object-cover -z-40 opacity-95 bg-blend-darken"
-						alt=""
-					/> */}
 				</div>
 			</Container>
 		</footer>

@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { ChevronDown, Send } from "lucide-react";
 import { Contact1, Contact2, Contact3, Contact4 } from "@/assets/contact";
 import Image from "next/image";
+import { useState } from "react";
 
 interface ContactMethod {
 	icon: string;
@@ -47,6 +48,50 @@ const inputClasses =
 	"w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100";
 
 export function ContactHero() {
+	const [form, setForm] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		subject: "",
+		message: "",
+	});
+
+	const handleChange = (
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+		>,
+	) => {
+		setForm((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const whatsappMessage = `*New Contact Form Submission*
+*Name:* ${form.name}
+*Email:* ${form.email}
+*Phone:* ${form.phone}
+*Subject:* ${form.subject}
+	
+*Message:*
+${form.message}`;
+
+		window.open(
+			`https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`,
+			"_blank",
+		);
+
+		setForm({
+			name: "",
+			email: "",
+			phone: "",
+			subject: "",
+			message: "",
+		});
+	};
 	return (
 		<section className="py-16 sm:py-20">
 			<Container>
@@ -104,13 +149,7 @@ export function ContactHero() {
 							Fill in below and we will get back to you
 						</p>
 
-						<form
-							className="mt-6 space-y-5"
-							onSubmit={(event) => {
-								event.preventDefault();
-								// TODO: wire this up to your submission endpoint.
-							}}
-						>
+						<form className="mt-6 space-y-5" onSubmit={handleSubmit}>
 							<div>
 								<label
 									htmlFor="name"
@@ -122,6 +161,8 @@ export function ContactHero() {
 									id="name"
 									name="name"
 									type="text"
+									value={form.name}
+									onChange={handleChange}
 									placeholder="Enter Your Name"
 									className={inputClasses}
 								/>
@@ -138,6 +179,8 @@ export function ContactHero() {
 									id="email"
 									name="email"
 									type="email"
+									value={form.email}
+									onChange={handleChange}
 									placeholder="Enter Your Email"
 									className={inputClasses}
 								/>
@@ -154,6 +197,8 @@ export function ContactHero() {
 									id="phone"
 									name="phone"
 									type="tel"
+									value={form.phone}
+									onChange={handleChange}
 									placeholder="Enter Your Phone"
 									className={inputClasses}
 								/>
@@ -170,7 +215,8 @@ export function ContactHero() {
 									<select
 										id="subject"
 										name="subject"
-										defaultValue=""
+										value={form.subject}
+										onChange={handleChange}
 										className={clsx(inputClasses, "appearance-none pr-10")}
 									>
 										<option value="" disabled>
@@ -200,6 +246,8 @@ export function ContactHero() {
 									id="message"
 									name="message"
 									rows={4}
+									value={form.message}
+									onChange={handleChange}
 									placeholder="Type your message here..."
 									className={clsx(inputClasses, "resize-none")}
 								/>

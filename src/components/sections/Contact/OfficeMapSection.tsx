@@ -1,5 +1,5 @@
 import { Container } from "@/components/layout/Container";
-import { Building2, Clock, Image as ImageIcon, MapPin } from "lucide-react";
+import { Building2, Clock } from "lucide-react";
 
 export function OfficeMapSection() {
 	return (
@@ -8,16 +8,15 @@ export function OfficeMapSection() {
 				<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 					{/* Map placeholder */}
 					<div className="group relative flex min-h-70 items-center justify-center overflow-hidden rounded-2xl border border-gray-100 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 lg:min-h-80">
-						<div className="flex flex-col items-center gap-2 text-gray-400">
-							<ImageIcon
-								className="h-10 w-10 transition-transform duration-200 group-hover:scale-110"
-								aria-hidden="true"
-							/>
-							<span className="text-sm font-medium">Map placeholder</span>
-						</div>
-						<span className="absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary-foreground text-white shadow-lg ring-4 ring-white transition-transform duration-200 group-hover:scale-110">
-							<MapPin className="h-4 w-4" aria-hidden="true" />
-						</span>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119074.33693756252!2d78.97100789999999!3d21.1494918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4eb032b9129b7%3A0x95ce78f48f1810a2!2sNAGPUR%20MART!5e0!3m2!1sen!2sin!4v1784455007626!5m2!1sen!2sin"
+							width="100%"
+							height="250"
+							loading="lazy"
+							allowFullScreen
+							referrerPolicy="no-referrer-when-downgrade"
+							className="border-0 h-full"
+						/>
 					</div>
 
 					{/* Office info cards */}

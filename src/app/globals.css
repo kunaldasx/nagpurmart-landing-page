@@ -8,6 +8,11 @@
 
 	--primary-background: #0061ff26;
 	--primary-foreground: #0061ff;
+
+	/* Scrollbar */
+	--scrollbar-track: #d4d5d7;
+	--scrollbar-thumb: #0061ff66;
+	--scrollbar-thumb-hover: #0061ff;
 }
 
 @theme inline {
@@ -19,6 +24,38 @@
 
 	--font-inter: var(--font-inter), sans-serif;
 	--font-heading: var(--font-plus-jakarta-sans), sans-serif;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+	border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: 999px;
+	border: 2px solid var(--scrollbar-track);
+	transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+	background: var(--scrollbar-track);
 }
 
 body {
