@@ -15,7 +15,7 @@ export const PlayStoreBtn = () => {
 				height={26}
 			/>
 			<div className="flex flex-col items-start leading-2">
-				<p className="text-[12px] opacity-70">Get it on</p>
+				<p className="text-[12px] font-medium opacity-70">Get it on</p>
 				<p className="text-lg font-semibold">Play Store</p>
 			</div>
 		</a>

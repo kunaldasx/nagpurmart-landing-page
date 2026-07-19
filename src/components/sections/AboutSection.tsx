@@ -79,7 +79,7 @@ function AboutHero() {
 			<div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 				<div>
 					<span
-						className={`inline-block border-b-2 border-primary-foreground pb-1.5 text-sm font-bold tracking-wider uppercase transition-all duration-700 ${
+						className={`inline-block border-b-2 border-primary-foreground pb-1.5 text-base font-bold tracking-wider uppercase transition-all duration-700 ${
 							loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
 						}`}
 					>
@@ -87,7 +87,7 @@ function AboutHero() {
 					</span>
 
 					<h1
-						className={`text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight transition-all duration-700 ${
+						className={`text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight transition-all duration-700 ${
 							loaded
 								? "opacity-100 translate-y-0 delay-100"
 								: "opacity-0 translate-y-3"
@@ -100,7 +100,7 @@ function AboutHero() {
 					</h1>
 
 					<p
-						className={`mt-5 max-w-md text-sm leading-relaxed text-gray-500 sm:text-base transition-all duration-700 ${
+						className={`mt-5 max-w-md text-base leading-relaxed text-gray-500 sm:text-lg transition-all duration-700 ${
 							loaded
 								? "opacity-100 translate-y-0 delay-200"
 								: "opacity-0 translate-y-3"
@@ -124,13 +124,13 @@ function AboutHero() {
 									transitionDelay: loaded ? `${300 + i * 100}ms` : "0ms",
 								}}
 							>
-								<span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-background text-white transition-all duration-300 ease-out group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-lg">
+								<span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-background text-white transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-107 group-hover:shadow-lg">
 									<Image
 										src={feature.icon}
 										alt={feature.title}
 										width={28}
 										height={28}
-										className="h-8 w-8 transition-transform duration-300 group-hover:rotate-[8deg]"
+										className="h-8 w-8 transition-transform duration-300 group-hover:rotate-[4deg]"
 									/>
 								</span>
 								<p className="mt-3 text-sm font-semibold text-gray-900">
@@ -181,18 +181,18 @@ function OurStory() {
 					inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
 				}`}
 			>
-				<p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground sm:text-base">
+				<p className="text-base font-bold uppercase tracking-wider text-primary-foreground sm:text-lg">
 					Our Story
 				</p>
-				<h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+				<h2 className="mt-3 text-2xl font-bold text-gray-900 sm:text-3xl">
 					Humari Kahani, Aapke Liye
 				</h2>
-				<p className="mt-6 text-sm leading-relaxed text-gray-500">
+				<p className="mt-6 text-sm font-medium leading-relaxed text-gray-500">
 					NagpurMart.in ki shuruaat ek simple idea se hui - Nagpur ke logo ko ek
 					aisa platform dena jahan unhe har category ke product best price mein,
 					aasani se aur bharose ke saath mil sake.
 				</p>
-				<p className="mt-4 text-sm leading-relaxed text-gray-500">
+				<p className="mt-4 text-sm font-medium leading-relaxed text-gray-500">
 					Aaj hum ek mission par hain - Har ghar tak quality products pahuchana
 					aur shopping ko aur easy banana.
 				</p>
@@ -212,10 +212,10 @@ function OurValues() {
 					inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
 				}`}
 			>
-				<p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground">
+				<p className="text-base font-bold sm:text-lg uppercase tracking-wider text-primary-foreground">
 					What We Believe In
 				</p>
-				<h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+				<h2 className="mt-3 text-2xl font-bold text-gray-900 sm:text-3xl">
 					Humare Values
 				</h2>
 			</div>
@@ -231,19 +231,19 @@ function OurValues() {
 						}`}
 						style={{ transitionDelay: inView ? `${i * 100}ms` : "0ms" }}
 					>
-						<span className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-primary-foreground transition-all duration-300 ease-out group-hover:-translate-y-1.5 group-hover:bg-blue-200 group-hover:shadow-lg">
+						<span className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-primary-foreground transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:bg-blue-200 group-hover:shadow-lg">
 							<Image
 								src={value.icon}
 								alt={value.title}
 								width={28}
 								height={28}
-								className="h-12 w-12 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+								className="h-12 w-12 transition-transform duration-300 group-hover:scale-107 group-hover:rotate-4"
 							/>
 						</span>
 						<p className="mt-4 text-sm font-semibold text-gray-900">
 							{value.title}
 						</p>
-						<p className="mt-1.5 max-w-40 text-xs leading-normal text-gray-500">
+						<p className="mt-1.5 max-w-40 text-xs font-medium leading-normal text-gray-500">
 							{value.description}
 						</p>
 					</div>

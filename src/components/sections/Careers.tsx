@@ -124,14 +124,14 @@ export default function CareersSection() {
 							variants={staggerContainer(0.12)}
 						>
 							<motion.div variants={fadeUp} className="inline-flex flex-col">
-								<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-sm font-bold tracking-wider uppercase">
+								<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-base font-bold tracking-wider uppercase">
 									Careers
 								</span>
 							</motion.div>
 
 							<motion.h1
 								variants={fadeUp}
-								className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
+								className="text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
 							>
 								Build Your Career.
 								<span className="mt-1 block text-primary-foreground">
@@ -141,7 +141,7 @@ export default function CareersSection() {
 
 							<motion.div
 								variants={fadeUp}
-								className="mt-7 max-w-125 space-y-4 text-sm leading-relaxed sm:text-base"
+								className="mt-7 max-w-125 space-y-4 text-sm font-medium leading-relaxed sm:text-base"
 							>
 								<p>
 									At NagpurMart.in, we are on a mission to make shopping simple,
@@ -158,7 +158,7 @@ export default function CareersSection() {
 							<motion.a
 								href="#open-positions"
 								variants={fadeUp}
-								whileHover={{ scale: 1.05 }}
+								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.96 }}
 								className="mt-7 inline-flex items-center justify-center gap-3 rounded-full bg-primary-foreground px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 sm:text-base"
 							>
@@ -201,17 +201,17 @@ export default function CareersSection() {
 					viewport={{ once: true, amount: 0.4 }}
 					variants={fadeUp}
 				>
-					<p className="text-sm font-semibold uppercase tracking-wide text-primary-foreground sm:text-base">
+					<p className="text-base font-bold uppercase tracking-wide text-primary-foreground sm:text-lg">
 						Why Work With Us?
 					</p>
-					<h2 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
+					<h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
 						More the
 						<span className="underline decoration-primary-foreground decoration-2 underline-offset-4">
 							n J
 						</span>
 						ust a Job
 					</h2>
-					<p className="mx-auto mt-3 max-w-xl text-sm text-gray-500">
+					<p className="mx-auto mt-3 max-w-xl text-sm font-medium text-gray-500">
 						We believe in growing together and celebrating every success.
 					</p>
 				</motion.div>
@@ -227,10 +227,10 @@ export default function CareersSection() {
 						<motion.div
 							key={perk.title}
 							variants={fadeUp}
-							whileHover={{ y: -6 }}
+							whileHover={{ y: -2 }}
 							className="group flex flex-col items-center rounded-xl border border-gray-100 bg-white px-4 py-4 shadow-sm transition-shadow duration-300 hover:shadow-xl"
 						>
-							<div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+							<div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 transition-transform duration-300 group-hover:scale-107 group-hover:rotate-4">
 								<Image
 									src={perk.icon}
 									alt={perk.title}
@@ -258,10 +258,10 @@ export default function CareersSection() {
 					viewport={{ once: true, amount: 0.4 }}
 					variants={fadeUp}
 				>
-					<p className="text-sm font-semibold uppercase tracking-wide text-primary-foreground sm:text-base">
+					<p className="text-base font-bold uppercase tracking-wide text-primary-foreground sm:text-lg">
 						Open Positions
 					</p>
-					<h2 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
+					<h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
 						Current Openings
 					</h2>
 				</motion.div>
@@ -277,7 +277,7 @@ export default function CareersSection() {
 						<motion.div
 							key={job.title}
 							variants={fadeUp}
-							whileHover={{ y: -4 }}
+							whileHover={{ y: -2 }}
 							className="group grid grid-cols-1 gap-5 rounded-2xl border border-gray-200 bg-white px-6 py-5 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-blue-200 hover:shadow-md sm:px-8 lg:grid-cols-[1.4fr_1fr_auto] lg:items-center lg:gap-8"
 						>
 							{/* Job Info */}
@@ -313,7 +313,7 @@ export default function CareersSection() {
 										)}
 									</div>
 
-									<p className="mt-0.5 text-xs text-gray-400 sm:text-sm">
+									<p className="mt-0.5 text-xs font-medium text-gray-400 sm:text-sm">
 										{job.department}
 									</p>
 								</div>
@@ -321,12 +321,12 @@ export default function CareersSection() {
 
 							{/* Location & Job Type */}
 							<div className="flex items-center gap-6 pl-19 lg:justify-start lg:pl-0">
-								<div className="flex items-center gap-2 whitespace-nowrap text-xs text-gray-500 sm:text-sm">
+								<div className="flex items-center gap-2 whitespace-nowrap text-xs font-medium text-gray-500 sm:text-sm">
 									<MapPin className="h-4 w-4 shrink-0 text-gray-400" />
 									<span>{job.location}</span>
 								</div>
 
-								<div className="flex items-center gap-2 whitespace-nowrap text-xs text-gray-500 sm:text-sm">
+								<div className="flex items-center gap-2 whitespace-nowrap text-xs font-medium text-gray-500 sm:text-sm">
 									<Clock className="h-4 w-4 shrink-0 text-gray-400" />
 									<span>{job.type}</span>
 								</div>

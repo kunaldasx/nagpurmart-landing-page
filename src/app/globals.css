@@ -110,7 +110,7 @@ h3 {
 		opacity: 0.4;
 	}
 	50% {
-		transform: translateX(5px);
+		transform: translateX(2px);
 		opacity: 1;
 	}
 }

@@ -18,12 +18,12 @@ const contactMethods: ContactMethod[] = [
 	{
 		icon: Contact1,
 		title: "Call Us",
-		lines: [SUPPORT_PHONE, "Mon - Fri, 9:00 AM - 6PM"],
+		lines: [`+91 ${SUPPORT_PHONE}`, "Mon - Fri, 9:00 AM - 6PM"],
 	},
 	{
 		icon: Contact2,
 		title: "Email Us",
-		lines: [`+91 ${SUPPORT_EMAIL}`, "We reply within 24 hours"],
+		lines: [SUPPORT_EMAIL, "We reply within 24 hours"],
 	},
 	{
 		icon: Contact3,
@@ -100,16 +100,16 @@ ${form.message}`;
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
 					{/* Left column: intro + contact methods */}
 					<div>
-						<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-sm font-bold tracking-wider uppercase">
+						<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-base sm:text-lg font-bold tracking-wider uppercase">
 							Contact Us
 						</span>
 
-						<h1 className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight">
+						<h1 className="text-[clamp(2rem,4vw,4.5rem)]  mt-5 text-4xl font-bold leading-tight tracking-tight">
 							We&apos;re Here to{" "}
 							<span className="text-primary-foreground">Help!</span>
 						</h1>
 
-						<p className="mt-4 max-w-md text-sm text-gray-500 sm:text-base">
+						<p className="mt-4 max-w-md text-sm font-medium text-gray-500 sm:text-base">
 							Have a question, suggestion or need help? Our team is always here
 							to assist you. Reach out to us anytime!
 						</p>
@@ -125,14 +125,17 @@ ${form.message}`;
 										alt={title}
 										width={28}
 										height={28}
-										className="h-12 w-12 object-cover transition-transform duration-200 group-hover:scale-110"
+										className="h-12 w-12 object-cover transition-transform duration-200 group-hover:scale-107"
 										aria-hidden="true"
 									/>
 
 									<div>
 										<h3 className="font-semibold text-gray-900">{title}</h3>
 										{lines.map((line) => (
-											<p key={line} className="text-sm text-gray-500">
+											<p
+												key={line}
+												className="text-sm font-medium text-gray-500"
+											>
 												{line}
 											</p>
 										))}

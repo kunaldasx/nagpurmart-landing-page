@@ -102,7 +102,7 @@ export function Navbar() {
 									key={item.href}
 									href={item.href}
 									className={clsx(
-										"group relative rounded text-[12px] font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 md:text-[15px] xl:text-[17px]",
+										"group relative rounded text-[12px] font-semibold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 md:text-[15px] xl:text-[17px]",
 										active
 											? "text-primary-foreground"
 											: "text-neutral-800 hover:text-primary-foreground",
@@ -125,9 +125,9 @@ export function Navbar() {
 						<a
 							href={APPSTORE_URL}
 							target="_blank"
-							className="hidden items-center gap-2 rounded-full bg-primary-foreground px-3 py-2.5 text-sm font-medium text-white cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:flex lg:px-6 lg:py-3 lg:text-base"
+							className="hidden items-center gap-2 rounded-full bg-primary-foreground px-3 py-2.5 text-sm font-semibold text-white cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:flex lg:px-6 lg:py-3 lg:text-base"
 						>
-							<ArrowDownToLine className="h-4 w-4" />
+							<ArrowDownToLine className="h-5 w-5" />
 							Download App
 						</a>
 
@@ -164,7 +164,7 @@ export function Navbar() {
 									key={item.href}
 									href={item.href}
 									className={clsx(
-										"rounded-xl px-3 py-2.5 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground",
+										"rounded-xl px-3 py-2.5 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground",
 										active
 											? "bg-blue-50 text-primary-foreground"
 											: "text-neutral-800 hover:bg-neutral-50",
@@ -177,7 +177,7 @@ export function Navbar() {
 						<a
 							href={APPSTORE_URL}
 							target="_blank"
-							className="mt-2 flex items-center justify-center gap-2 rounded-full bg-primary-foreground px-6 py-3 font-medium text-white cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:hidden"
+							className="mt-2 flex items-center justify-center gap-2 rounded-full bg-primary-foreground px-6 py-3 font-semibold text-white cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 sm:hidden"
 						>
 							<ArrowDownToLine className="h-4 w-4" />
 							Download App

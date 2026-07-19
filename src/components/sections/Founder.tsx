@@ -4,13 +4,7 @@ import { Quote } from "lucide-react";
 import { Container } from "../layout/Container";
 import Image from "next/image";
 import { useRef } from "react";
-import {
-	motion,
-	useReducedMotion,
-	useScroll,
-	useTransform,
-	type Variants,
-} from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
 	Info1,
 	Info2,
@@ -102,21 +96,21 @@ function FounderIntro() {
 						<motion.h2
 							{...revealOnScroll(0.4)}
 							variants={fadeInUp(shouldReduceMotion, 0.08)}
-							className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
+							className="text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
 						>
 							Meet Our Founder
 						</motion.h2>
 						<motion.p
 							{...revealOnScroll(0.4)}
 							variants={fadeInUp(shouldReduceMotion, 0.14)}
-							className="text-[clamp(2rem,3.2vw,3.75rem)] font-bold leading-tight tracking-tight text-primary-foreground"
+							className="text-[clamp(2rem,4vw,4.5rem)] font-bold leading-tight tracking-tight text-primary-foreground"
 						>
 							Abhishek Thakur
 						</motion.p>
 						<motion.p
 							{...revealOnScroll(0.4)}
 							variants={fadeInUp(shouldReduceMotion, 0.2)}
-							className="mt-4 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base"
+							className="mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-600 sm:text-base"
 						>
 							NagpurMart.in ki shuruaat ek sapne se hui - Nagpur ke logo ko aisa
 							platform dena jahan unhe har category ke product best price mein,
@@ -146,10 +140,12 @@ function FounderIntro() {
 										className="h-8 w-8"
 									/>
 									<div>
-										<dt className="text-sm font-semibold text-[#011d4c]">
+										<dt className="text-base font-semibold text-[#011d4c]">
 											{row.label}
 										</dt>
-										<dd className="text-xs text-slate-500">{row.value}</dd>
+										<dd className="text-sm font-medium text-slate-500">
+											{row.value}
+										</dd>
 									</div>
 								</motion.div>
 							))}
@@ -174,15 +170,19 @@ function FounderIntro() {
 								aria-hidden="true"
 								className="h-5 w-5 -scale-x-100 text-blue-200"
 							/>
-							<p className="mt-2 text-sm leading-relaxed text-slate-600">
+							<p className="mt-2 text-sm font-medium leading-relaxed text-slate-600">
 								Mera Mission simple hai - Nagpur ke har ghar tak quality
 								products ko pahuchana aur shopping ko aur easy banana.
 							</p>
 							<p className="mt-4 text-sm font-semibold text-primary-foreground">
 								- Abhishek Thakur
 							</p>
-							<p className="text-xs text-slate-500">Founder & CEO</p>
-							<p className="text-xs text-slate-500">NagpurMart.in</p>
+							<p className="text-xs font-medium text-slate-500">
+								Founder & CEO
+							</p>
+							<p className="text-xs font-medium text-slate-500">
+								NagpurMart.in
+							</p>
 						</motion.div>
 					</div>
 				</div>
@@ -241,21 +241,13 @@ export function Journey() {
 	const shouldReduceMotion = useReducedMotion();
 	const timelineRef = useRef<HTMLDivElement>(null);
 
-	// The colored line "draws" itself left-to-right as the timeline scrolls
-	// through the viewport - literally tracing the founder's journey.
-	const { scrollYProgress } = useScroll({
-		target: timelineRef,
-		offset: ["start end", "end start"],
-	});
-	const lineProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
 	return (
 		<section className="border-t border-slate-100 py-12 sm:py-16">
 			<Container>
 				<motion.p
 					{...revealOnScroll(0.6)}
 					variants={fadeInUp(shouldReduceMotion)}
-					className="text-center text-sm font-semibold uppercase tracking-wider text-primary-foreground sm:text-base"
+					className="text-center text-base font-bold uppercase tracking-wider text-primary-foreground sm:text-lg"
 				>
 					My Journey
 				</motion.p>
@@ -274,11 +266,11 @@ export function Journey() {
 						className="absolute left-0 right-0 top-18.75 hidden h-0.5 bg-slate-200 lg:block"
 					/>
 					{/* Animated progress line layered on top of it */}
-					<motion.div
+					{/* <motion.div
 						aria-hidden="true"
 						style={{ scaleX: shouldReduceMotion ? 1 : lineProgress }}
 						className="absolute left-0 top-18.75 hidden h-0.5 w-full origin-left bg-primary-foreground lg:block"
-					/>
+					/> */}
 
 					<motion.div
 						{...revealOnScroll(0.1)}
@@ -289,10 +281,6 @@ export function Journey() {
 							<motion.div
 								key={item.year}
 								variants={fadeInUp(shouldReduceMotion)}
-								whileHover={{
-									y: -6,
-									transition: { duration: 0.25, ease: "easeOut" },
-								}}
 								className="relative flex flex-col items-center text-center"
 							>
 								{/* Icon */}
@@ -364,7 +352,7 @@ function MissionVision() {
 				<motion.p
 					{...revealOnScroll(0.6)}
 					variants={fadeInUp(shouldReduceMotion)}
-					className="text-center text-sm font-semibold uppercase tracking-wider text-primary-foreground sm:text-base"
+					className="text-center text-base font-bold uppercase tracking-wider text-primary-foreground sm:text-lg"
 				>
 					Mission &amp; Vision
 				</motion.p>
@@ -377,7 +365,7 @@ function MissionVision() {
 					<motion.div
 						variants={fadeInUp(shouldReduceMotion)}
 						whileHover={{
-							y: -6,
+							y: -2,
 							transition: { duration: 0.25, ease: "easeOut" },
 						}}
 						className="flex items-center gap-4 rounded-2xl bg-blue-50 p-6 transition-shadow duration-300 hover:shadow-lg sm:px-8 sm:py-10"
@@ -385,7 +373,7 @@ function MissionVision() {
 						{/* Icon */}
 						<motion.div
 							whileHover={{
-								scale: 1.1,
+								scale: 1.07,
 								rotate: 6,
 								transition: { duration: 0.25 },
 							}}

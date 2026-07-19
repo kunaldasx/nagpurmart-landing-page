@@ -25,7 +25,7 @@ export function AppDownloadBanner() {
 							Download Nagpur
 							<span className="text-primary-foreground">mart.in</span> App
 						</h3>
-						<p className="mt-2 text-gray-500">
+						<p className="mt-2 font-medium text-gray-500">
 							Aur paayein Best Price, Fast Delivery aur Amazing Offers!
 						</p>
 					</div>

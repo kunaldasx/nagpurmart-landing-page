@@ -15,8 +15,6 @@ import { Container } from "../layout/Container";
 import { Feature1, Feature2, Feature3, Feature4, Banner } from "@/assets/hero";
 import { AppStoreBtn } from "../ui/AppStoreBtn";
 import { PlayStoreBtn } from "../ui/PlayStoreBtn";
-import Lottie from "lottie-react";
-import groceryAnimation from "@/assets/animations/grocery-lottie.json";
 import { FLOATING_ITEMS, FloatingIcon, HeroBlob } from "../ui/HeroDecor";
 
 const features = [
@@ -97,7 +95,7 @@ export default function Hero() {
 					>
 						<motion.h1
 							variants={fadeUp(reduced)}
-							className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
+							className="text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
 						>
 							Nagpur Ka Apna
 							<br />
@@ -106,14 +104,14 @@ export default function Hero() {
 
 						<motion.p
 							variants={fadeUp(reduced)}
-							className="mt-5 text-[16px] font-medium text-neutral-900 sm:text-lg"
+							className="mt-5 text-[16px] font-semibold text-neutral-900 sm:text-lg"
 						>
 							Her Chiz, Sabse Sasta, Sabse Accha!
 						</motion.p>
 
 						<motion.p
 							variants={fadeUp(reduced)}
-							className="mt-3 text-sm leading-snug text-neutral-500 sm:text-base"
+							className="mt-3 text-sm leading-snug font-medium text-neutral-500 sm:text-base"
 						>
 							Groceries, Electronics, Fashion, Pharmacy & more —
 							<br className="hidden sm:block" />
@@ -129,13 +127,13 @@ export default function Hero() {
 								<motion.div
 									key={title}
 									variants={fadeUp(reduced)}
-									whileHover={reduced ? undefined : { y: -6 }}
+									whileHover={reduced ? undefined : { y: -2 }}
 									transition={{ type: "spring", stiffness: 300, damping: 20 }}
 									className="group text-center"
 								>
 									<motion.div
 										whileHover={
-											reduced ? undefined : { scale: 1.12, rotate: 6 }
+											reduced ? undefined : { scale: 1.07, rotate: 4 }
 										}
 										transition={{ type: "spring", stiffness: 300, damping: 15 }}
 										className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground lg:h-14 lg:w-14"
@@ -145,7 +143,7 @@ export default function Hero() {
 											alt={title}
 											width={24}
 											height={24}
-											className="h-6 w-6 object-cover lg:h-12 lg:w-12"
+											className="h-8 w-8 object-cover lg:h-12 lg:w-12"
 										/>
 									</motion.div>
 									<h3 className="mt-2 text-sm font-semibold text-neutral-900 transition-colors duration-300 group-hover:text-blue-700 lg:text-base">

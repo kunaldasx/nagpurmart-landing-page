@@ -27,7 +27,7 @@ export function OfficeMapSection() {
 							</span>
 							<div>
 								<h3 className="font-semibold text-gray-900">Our Office</h3>
-								<p className="mt-1 text-sm text-gray-500">
+								<p className="mt-1 text-sm font-medium text-gray-500">
 									NagpurMart&apos;s Pvt Ltd, 43 Sitabuldi, Nagpur - 440001,
 									Maharashtra, India
 								</p>
@@ -40,13 +40,13 @@ export function OfficeMapSection() {
 							</span>
 							<div>
 								<h3 className="font-semibold text-gray-900">Office Hours</h3>
-								<p className="mt-1 text-sm text-gray-500">
+								<p className="mt-1 text-sm font-medium text-gray-500">
 									Monday - Saturday: 9:00AM - 7:00PM
 								</p>
-								<p className="text-sm text-gray-500">
+								<p className="text-sm font-medium text-gray-500">
 									Sunday: 10:00AM - 5:00PM
 								</p>
-								<p className="text-sm text-gray-500">
+								<p className="text-sm font-medium text-gray-500">
 									Closed on major public holidays
 								</p>
 							</div>

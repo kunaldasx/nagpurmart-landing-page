@@ -88,8 +88,8 @@ function FooterColumn({
 }) {
 	return (
 		<div>
-			<h3 className="font-semibold text-gray-900">{title}</h3>
-			<ul className="mt-4 space-y-2.5">
+			<h3 className="font-semibold text-lg text-gray-900">{title}</h3>
+			<ul className="mt-4 text-lg font-semibold space-y-2.5">
 				{links.map((link) => (
 					<li key={link.label}>
 						<Link
@@ -106,15 +106,6 @@ function FooterColumn({
 }
 
 export function Footer() {
-	// const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-	// 	e.preventDefault();
-
-	// 	window.open(
-	// 		`https://wa.me/91${SUPPORT_PHONE}?text=${encodeURIComponent(whatsappMessage)}`,
-	// 		"_blank",
-	// 	);
-	// };
-
 	return (
 		<footer className="border-t border-gray-100">
 			<Container>
@@ -122,7 +113,7 @@ export function Footer() {
 					{/* Brand column */}
 					<div className="col-span-2 sm:col-span-3 lg:col-span-1">
 						<div className="flex items-center gap-2">
-							<span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground">
+							<span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground">
 								<Image
 									src="/images/logo-light.png"
 									alt="logo"
@@ -132,14 +123,14 @@ export function Footer() {
 									aria-hidden="true"
 								/>
 							</span>
-							<span className="text-lg font-bold text-gray-900">
+							<span className="text-xl font-bold text-gray-900">
 								nagpur<span className="text-primary-foreground">mart.in</span>
 							</span>
 						</div>
-						<p className="mt-4 text-sm text-gray-500">
+						<p className="mt-4 text-sm font-medium text-gray-500">
 							Har Chiz, Sabse Sasta, Sabse Accha
 						</p>
-						<p className="mt-4 text-xs text-gray-400">
+						<p className="mt-4 text-xs font-medium text-gray-400">
 							&copy; 2026 NagpurMart&apos;s Pvt Ltd. All Rights Reserved.
 						</p>
 					</div>
@@ -148,7 +139,7 @@ export function Footer() {
 					<FooterColumn title="Legal" links={legalLinks} />
 					{/* Social column */}
 					<div>
-						<h3 className="font-semibold text-gray-900">Follow Us</h3>
+						<h3 className="font-semibold text-lg text-gray-900">Follow Us</h3>
 						<div className="mt-4 flex items-center gap-3">
 							{socialLinks.map(({ icon: Icon, link, label }) => (
 								<a
@@ -156,7 +147,7 @@ export function Footer() {
 									href={link}
 									target="_blank"
 									aria-label={label}
-									className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-primary-background hover:text-primary-foreground"
+									className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-primary-background hover:text-primary-foreground"
 								>
 									<Image
 										src={Icon}
@@ -169,7 +160,7 @@ export function Footer() {
 								</a>
 							))}
 						</div>
-						<p className="mt-4 flex items-center gap-1.5 text-xs text-gray-500 sm:text-sm">
+						<p className="mt-4 flex items-center gap-1.5 text-xs font-medium text-gray-500 sm:text-sm">
 							<span>Made with</span>
 							<Heart
 								className="h-3.5 w-3.5 fill-red-500 text-red-500"

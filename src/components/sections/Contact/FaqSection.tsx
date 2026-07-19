@@ -29,10 +29,10 @@ export function FaqSection() {
 		<section className="py-8">
 			<Container>
 				<div className="mx-auto max-w-3xl text-center">
-					<span className="relative inline-block text-sm sm:text-base font-semibold uppercase tracking-wide text-primary-foreground after:absolute after:-bottom-1.5 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:bg-primary-foreground after:content-['']">
+					<span className="relative inline-block text-base sm:text-lg font-bold uppercase tracking-wide text-primary-foreground after:absolute after:-bottom-1.5 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:bg-primary-foreground after:content-['']">
 						FAQ
 					</span>
-					<h2 className="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+					<h2 className="mt-5 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
 						Frequently Asked Questions
 					</h2>
 				</div>

@@ -187,13 +187,13 @@ export function Hero() {
 					>
 						<motion.span
 							variants={fadeUp}
-							className="inline-block border-b-2 border-primary-foreground pb-1.5 text-sm font-bold tracking-wider uppercase"
+							className="inline-block border-b-2 border-primary-foreground pb-1.5 text-base font-bold tracking-wider uppercase"
 						>
 							Features
 						</motion.span>
 						<motion.h1
 							variants={fadeUp}
-							className="text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
+							className="text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight"
 						>
 							Har Zarurat, Ek App.
 							<br />
@@ -201,7 +201,7 @@ export function Hero() {
 						</motion.h1>
 						<motion.p
 							variants={fadeUp}
-							className="mt-5 max-w-md text-sm leading-relaxed text-gray-500 sm:text-base"
+							className="mt-5 max-w-md text-sm font-medium leading-relaxed text-gray-500 sm:text-base"
 						>
 							NagpurMart.in aapko deta hai best quality products, best prices
 							aur fastest delivery ka vaada.
@@ -216,15 +216,15 @@ export function Hero() {
 									key={title}
 									variants={fadeUp}
 									whileHover={{
-										y: -5,
+										y: -2,
 										transition: { duration: 0.25, ease: "easeOut" },
 									}}
 									className="flex flex-col items-center text-center"
 								>
 									<motion.div
 										whileHover={{
-											scale: 1.12,
-											rotate: -6,
+											scale: 1.07,
+											rotate: -4,
 											transition: {
 												type: "spring",
 												stiffness: 300,
@@ -244,7 +244,9 @@ export function Hero() {
 									<p className="mt-3 text-sm font-semibold text-gray-900">
 										{title}
 									</p>
-									<p className="text-xs text-gray-400">{subtitle}</p>
+									<p className="text-xs font-medium text-gray-400">
+										{subtitle}
+									</p>
 								</motion.div>
 							))}
 						</motion.div>
@@ -353,15 +355,15 @@ export function TopFeatured() {
 							key={title}
 							variants={fadeUp}
 							whileHover={{
-								y: -8,
+								y: -4,
 								transition: { duration: 0.25, ease: "easeOut" },
 							}}
 							className="rounded-2xl bg-gray-50 p-6 border border-slate-200 text-center flex flex-col items-center justify-center transition-colors duration-300 hover:border-blue-200 hover:bg-blue-50/60 hover:shadow-lg"
 						>
 							<motion.div
 								whileHover={{
-									scale: 1.15,
-									rotate: -8,
+									scale: 1.07,
+									rotate: -4,
 									transition: { type: "spring", stiffness: 300, damping: 15 },
 								}}
 								className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-background text-white"
@@ -377,7 +379,7 @@ export function TopFeatured() {
 							<h3 className="mt-4 text-sm font-semibold text-gray-900">
 								{title}
 							</h3>
-							<p className="mt-2 text-xs leading-relaxed text-gray-500">
+							<p className="mt-2 text-xs font-medium leading-relaxed text-gray-500">
 								{desc}
 							</p>
 						</motion.div>
@@ -400,14 +402,14 @@ export function TopFeatured() {
 								key={title}
 								variants={fadeUp}
 								whileHover={{
-									y: -4,
+									y: -2,
 									transition: { duration: 0.2, ease: "easeOut" },
 								}}
 								className="flex flex-col items-center text-center"
 							>
 								<motion.div
 									whileHover={{
-										scale: 1.15,
+										scale: 1.07,
 										transition: {
 											type: "spring",
 											stiffness: 300,
@@ -426,7 +428,7 @@ export function TopFeatured() {
 								<h4 className="mt-3 text-sm font-semibold text-gray-900">
 									{title}
 								</h4>
-								<p className="mt-1 text-xs text-gray-500">{desc}</p>
+								<p className="mt-1 text-xs font-medium text-gray-500">{desc}</p>
 							</motion.div>
 						))}
 					</motion.div>

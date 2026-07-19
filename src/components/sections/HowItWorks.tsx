@@ -145,12 +145,12 @@ export function Working() {
 						<Fragment key={step.title}>
 							<motion.div
 								variants={stepVariants}
-								whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+								whileHover={shouldReduceMotion ? undefined : { y: -2 }}
 								transition={{ type: "spring", stiffness: 300, damping: 20 }}
 								className="group flex w-32 flex-col items-center text-center sm:w-36"
 							>
 								<motion.div
-									whileHover={shouldReduceMotion ? undefined : { scale: 1.12 }}
+									whileHover={shouldReduceMotion ? undefined : { scale: 1.07 }}
 									transition={{ type: "spring", stiffness: 300, damping: 15 }}
 									className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-background transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-primary-foreground/20 lg:h-14 lg:w-14"
 								>
@@ -213,7 +213,7 @@ export function BrandStory() {
 						duration: shouldReduceMotion ? 0.01 : 0.6,
 						ease: [0.22, 1, 0.36, 1],
 					}}
-					className="flex flex-col items-center gap-8 bg-blue-50 md:flex-row p-8 sm:p-10 lg:p-12"
+					className="flex flex-col items-center gap-8 bg-primary-background rounded-2xl md:flex-row p-8 sm:p-10 lg:p-12"
 				>
 					<div className="relative h-full w-150 md:h-80">
 						<motion.div
@@ -235,13 +235,13 @@ export function BrandStory() {
 						<h3 className="text-2xl font-bold text-[#011d4c]">
 							Brand&apos;s Story
 						</h3>
-						<p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
 							We created Nagpurmart.in with one simple idea - to make everyday
 							grocery shopping effortless. From fresh fruits and vegetables to
 							daily essentials, every product is carefully selected to deliver
 							trusted quality at fair prices.
 						</p>
-						<p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
 							We believe your time is valuable, that&apos;s why we focus on{" "}
 							<span className="font-semibold text-primary-foreground">
 								fast delivery, fresh products, transparent pricing
@@ -251,7 +251,9 @@ export function BrandStory() {
 						<p className="mt-6 font-semibold text-primary-foreground">
 							- Pankaj Agrawal
 						</p>
-						<p className="text-sm text-slate-500">Founder, Nagpurmart.in</p>
+						<p className="text-sm font-medium text-slate-500">
+							Founder, Nagpurmart.in
+						</p>
 					</div>
 				</motion.div>
 			</Container>
@@ -294,15 +296,15 @@ export function OurStory() {
 						<h3 className="text-2xl font-bold text-[#011d4c]">
 							Our Brand Story
 						</h3>
-						<p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
 							NagpurMart.in ki shuruaat ek simple idea se hui - Nagpur ke logo
 							ko ek bharosemand, sasta aur fast shopping experience dena.
 						</p>
-						<p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
 							Aaj hum groceries se lekar electronics, fashion se lekar pharmacy
 							tak, har ek cheez aapke saath hain.
 						</p>
-						<p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
 							Humara commitment simple hai - Sabse Sasta, Sabse Accha, Hamesha
 							Aapke Saath.
 						</p>
@@ -408,7 +410,7 @@ function StatItem({
 		<motion.div
 			whileHover={shouldReduceMotion ? undefined : { y: -4 }}
 			transition={{ type: "spring", stiffness: 300, damping: 20 }}
-			className="flex items-center justify-start rounded-lg px-4 transition-colors duration-300 hover:bg-white/60 md:justify-center"
+			className="flex items-center justify-start gap-2 rounded-lg px-4 transition-colors duration-300 hover:bg-white/60 md:justify-center"
 		>
 			<Image
 				src={stat.icon}
@@ -418,11 +420,11 @@ function StatItem({
 				className="h-8 w-8 md:h-10 md:w-10"
 			/>
 			<div>
-				<p className="text-lg font-normal text-primary-foreground sm:text-xl">
+				<p className="text-lg font-semibold text-primary-foreground sm:text-xl">
 					{display}
 					{stat.suffix ?? ""}
 				</p>
-				<p className="text-xs text-slate-500">{stat.label}</p>
+				<p className="text-xs font-medium text-slate-500">{stat.label}</p>
 			</div>
 		</motion.div>
 	);
@@ -486,7 +488,7 @@ export function AppDownload() {
 						<h3 className="text-xl font-bold text-white sm:text-2xl">
 							Download NagpurMart App
 						</h3>
-						<p className="max-w-xs mt-2 text-sm text-blue-100 sm:text-base">
+						<p className="max-w-xs mt-2 text-sm font-medium text-blue-100 sm:text-base">
 							Aur paayein Best Price, Fast Delivery aur Amazing Offers!
 						</p>
 					</div>
@@ -570,7 +572,7 @@ export function TrustBadges() {
 						duration: shouldReduceMotion ? 0.01 : 0.5,
 						ease: [0.22, 1, 0.36, 1],
 					}}
-					className="text-center text-xl font-normal text-[#011d4c] sm:text-2xl"
+					className="text-center text-xl font-semibold text-[#011d4c] sm:text-2xl"
 				>
 					Trusted by Thousands of Families in Nagpur
 				</motion.h3>
@@ -601,14 +603,16 @@ export function TrustBadges() {
 									alt={badge.title}
 									width={28}
 									height={28}
-									className="h-7 w-7"
+									className="h-8 w-8"
 								/>
 							</motion.div>
 							<div className="w-full flex flex-col items-start leading-tight">
 								<p className="text-sm font-semibold text-start text-[#011d4c]">
 									{badge.title}
 								</p>
-								<p className="text-xs text-slate-500">{badge.subtitle}</p>
+								<p className="text-xs font-medium text-slate-500">
+									{badge.subtitle}
+								</p>
 							</div>
 						</motion.div>
 					))}

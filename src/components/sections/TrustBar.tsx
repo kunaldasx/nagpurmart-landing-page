@@ -12,7 +12,7 @@ export function TrustBar() {
 	return (
 		<div className="bg-primary-foreground">
 			<Container>
-				<div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-5 sm:justify-between">
+				<div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-4 sm:justify-between">
 					{trustItems.map(({ icon: Icon, label }) => (
 						<div key={label} className="flex items-center gap-2.5 text-white">
 							<Icon className="h-5 w-5 shrink-0" aria-hidden="true" />

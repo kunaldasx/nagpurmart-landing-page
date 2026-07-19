@@ -228,19 +228,19 @@ function AppHero() {
 					<div>
 						<span
 							className={clsx(
-								"inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-all duration-700 ease-out",
+								"inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-700 ease-out",
 								mounted
 									? "opacity-100 translate-y-0"
 									: "opacity-0 -translate-y-2",
 							)}
 						>
-							<Download className="h-3.5 w-3.5" />
+							<Download className="h-4 w-4" />
 							Download App
 						</span>
 
 						<h1
 							className={clsx(
-								"text-[clamp(2rem,3.2vw,3.75rem)] mt-5 text-4xl font-bold leading-tight tracking-tight transition-all duration-700 ease-out",
+								"text-[clamp(2rem,4vw,4.5rem)] mt-5 text-4xl font-bold leading-tight tracking-tight transition-all duration-700 ease-out",
 								mounted
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4",
@@ -259,7 +259,7 @@ function AppHero() {
 
 						<p
 							className={clsx(
-								"mt-4 max-w-md text-sm leading-relaxed text-slate-700 transition-all duration-700 ease-out sm:text-base",
+								"mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-700 transition-all duration-700 ease-out sm:text-base",
 								mounted
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4",
@@ -290,12 +290,12 @@ function AppHero() {
 										alt={feature.title}
 										width={32}
 										height={32}
-										className="h-8 w-8 object-contain px-auto transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110 md:h-12 md:w-12"
+										className="h-8 w-8 object-contain px-auto transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-107 md:h-12 md:w-12"
 									/>
 									<p className="text-sm font-semibold text-[#011d4c]">
 										{feature.title}
 									</p>
-									<p className="text-xs leading-snug text-slate-500">
+									<p className="text-xs font-medium leading-snug text-slate-500">
 										{feature.description}
 									</p>
 								</div>
@@ -380,7 +380,7 @@ export function AppBenefits() {
 							: "opacity-0 translate-y-6",
 					)}
 				>
-					<p className="text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground">
+					<p className="text-center text-base font-bold uppercase tracking-wider text-primary-foreground sm:text-lg">
 						Kyun Download Karein?
 					</p>
 					<h2 className="mt-2 text-center text-2xl font-bold text-[#011d4c] sm:text-3xl">
@@ -495,7 +495,7 @@ function StepCard({
 				>
 					{number}
 				</span>
-				<p className="text-xs font-medium leading-snug text-[#011d4c]">
+				<p className="text-sm font-medium leading-snug text-[#011d4c]">
 					{description}
 				</p>
 				<div className="flex h-24 w-24 items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110">
@@ -518,7 +518,7 @@ export function DownloadSteps() {
 	return (
 		<section className="pb-12 pt-2 sm:pb-16">
 			<Container>
-				<p className="text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground">
+				<p className="text-center text-base font-bold sm:text-lg uppercase tracking-wider text-primary-foreground">
 					Kaise Download Karien
 				</p>
 				<h2 className="mt-2 text-center text-2xl font-bold text-[#011d4c] sm:text-3xl">
@@ -543,7 +543,7 @@ export function DownloadSteps() {
 								{i < downloadSteps.length - 1 && (
 									<ArrowRight
 										aria-hidden="true"
-										className="nm-arrow-flow mt-12 hidden h-5 w-5 shrink-0 text-blue-200 md:block"
+										className="nm-arrow-flow mt-12 hidden h-6 w-6 shrink-0 text-blue-400 md:block"
 										style={{ animationDelay: `${i * 0.15}s` }}
 									/>
 								)}
@@ -558,7 +558,7 @@ export function DownloadSteps() {
 						<div className="nm-pulse-ring rounded-2xl">
 							<DisplayQrCode />
 						</div>
-						<p className="text-xs text-blue-100">
+						<p className="text-xs font-medium text-blue-100">
 							Scan karien aur app instantly download karien
 						</p>
 					</div>
