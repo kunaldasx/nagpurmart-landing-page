@@ -207,12 +207,6 @@ export default function Hero() {
 							style={{ rotateX, rotateY, transformPerspective: 1000 }}
 							className="relative h-80 w-50 sm:h-100 sm:w-60 md:h-120 md:w-70 lg:h-150 lg:w-87.5"
 						>
-							{/* <Lottie
-								animationData={groceryAnimation}
-								loop
-								autoplay
-								className="absolute top-1/2 -left-12 transform -translate-1/2 z-20"
-							/> */}
 							<Image
 								src={Banner}
 								alt="NagpurMart App"

@@ -70,6 +70,7 @@ function AboutHero() {
 	const bgRef = useParallax<HTMLDivElement>(0.12);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setLoaded(true);
 	}, []);
 

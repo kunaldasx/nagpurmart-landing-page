@@ -1,8 +1,13 @@
-import { Facebook, Instagram, WhatsApp, X } from "@/assets/contact";
+"use client";
+
+import { Facebook, Instagram, WhatsApp, X, FooterBg } from "@/assets/footer";
 import { Container } from "@/components/layout/Container";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const companyLinks = [
 	{
@@ -99,10 +104,38 @@ function FooterColumn({
 }
 
 export function Footer() {
+	const windowSize = useWindowSize();
+	const [animateToX, setAnimateToX] = useState(0);
+
+	useEffect(() => {
+		// Calculate the distance to animate based on screen width
+		// Subtracting the element width to ensure it stops at the edge
+		const imageWidth = {
+			xs: 56, // w-14 (14 * 4px)
+			sm: 96, // w-24 (24 * 4px)
+			md: 128, // w-32 (32 * 4px)
+			lg: 160, // w-40 (40 * 4px)
+		};
+
+		// Determine which image width to use based on screen size
+		let currentWidth = imageWidth.xs - 50;
+		if (windowSize.width >= 1024) {
+			currentWidth = imageWidth.lg - 100;
+		} else if (windowSize.width >= 768) {
+			currentWidth = imageWidth.md - 100;
+		} else if (windowSize.width >= 640) {
+			currentWidth = imageWidth.sm;
+		}
+
+		// Calculate animation endpoint to be exactly the right edge of the screen
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		setAnimateToX(windowSize.width - currentWidth);
+	}, [windowSize]);
+
 	return (
-		<footer className="border-t border-gray-100 bg-white">
+		<footer className="border-t border-gray-100">
 			<Container>
-				<div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:grid-cols-3 lg:grid-cols-5">
+				<div className="relative grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:grid-cols-3 lg:grid-cols-5">
 					{/* Brand column */}
 					<div className="col-span-2 sm:col-span-3 lg:col-span-1">
 						<div className="flex items-center gap-2">
@@ -127,11 +160,9 @@ export function Footer() {
 							&copy; 2026 NagpurMart&apos;s Pvt Ltd. All Rights Reserved.
 						</p>
 					</div>
-
 					<FooterColumn title="Company" links={companyLinks} />
 					<FooterColumn title="Help & Support" links={supportLinks} />
 					<FooterColumn title="Legal" links={legalLinks} />
-
 					{/* Social column */}
 					<div>
 						<h3 className="font-semibold text-gray-900">Follow Us</h3>
@@ -163,6 +194,29 @@ export function Footer() {
 							<span>in Nagpur</span>
 						</p>
 					</div>
+
+					{/* Animation */}
+					{/* <Image
+						src={FooterBg}
+						className="absolute bottom-0 w-full object-cover -z-10 bg-blend-darken"
+						alt=""
+					/>
+					<motion.img
+						animate={{
+							x: [-150, animateToX],
+						}}
+						transition={{
+							x: {
+								duration: 20,
+								ease: "linear",
+								repeat: Infinity,
+								repeatType: "loop",
+							},
+						}}
+						src={DeliveryBoy}
+						className="w-14 sm:w-24 md:w-32 lg:w-40 absolute -bottom-1 left-0 object-cover -z-40 opacity-95 bg-blend-darken"
+						alt=""
+					/> */}
 				</div>
 			</Container>
 		</footer>

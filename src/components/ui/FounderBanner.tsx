@@ -1,5 +1,14 @@
+"use client";
+
 import clsx from "clsx";
 import Image, { type StaticImageData } from "next/image";
+import { useRef } from "react";
+import {
+	motion,
+	useReducedMotion,
+	useScroll,
+	useTransform,
+} from "framer-motion";
 import {
 	FounderImg,
 	Background,
@@ -18,6 +27,9 @@ interface FloatingIconProps {
 	className?: string;
 	size?: number;
 	variant?: "badge" | "bare";
+	delay?: number;
+	floatOffset?: number;
+	floatDuration?: number;
 }
 
 function FloatingIcon({
@@ -26,43 +38,77 @@ function FloatingIcon({
 	className,
 	size = 22,
 	variant = "badge",
+	delay = 0,
+	floatOffset = 8,
+	floatDuration = 3,
 }: FloatingIconProps) {
-	if (variant === "bare") {
-		return (
-			<Image
-				src={src}
-				alt={alt}
-				width={size}
-				height={size}
-				className={clsx(
-					"pointer-events-none absolute z-20 object-contain",
+	const shouldReduceMotion = useReducedMotion();
+
+	const wrapperClassName =
+		variant === "bare"
+			? clsx("pointer-events-none absolute z-20", className)
+			: clsx(
+					"absolute z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.12)]",
 					className,
-				)}
-			/>
-		);
-	}
+				);
 
 	return (
-		<div
-			className={clsx(
-				"absolute z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.12)]",
-				className,
-			)}
+		<motion.div
+			className={wrapperClassName}
+			initial={{ opacity: 0, scale: 0.5, y: shouldReduceMotion ? 0 : 14 }}
+			whileInView={{ opacity: 1, scale: 1, y: 0 }}
+			viewport={{ once: true, amount: 0.4 }}
+			whileHover={{ scale: 1.15, transition: { duration: 0.2 } }}
+			transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
 		>
-			<Image
-				src={src}
-				alt={alt}
-				width={size}
-				height={size}
-				className="object-contain"
-			/>
-		</div>
+			{/* Separate inner layer so the continuous float doesn't fight the entrance animation */}
+			<motion.div
+				animate={shouldReduceMotion ? undefined : { y: [0, -floatOffset, 0] }}
+				transition={{
+					duration: floatDuration,
+					repeat: Infinity,
+					ease: "easeInOut",
+					delay,
+				}}
+			>
+				<Image
+					src={src}
+					alt={alt}
+					width={size}
+					height={size}
+					className="object-contain"
+				/>
+			</motion.div>
+		</motion.div>
 	);
 }
 
 export default function FounderBanner() {
+	const shouldReduceMotion = useReducedMotion();
+	const containerRef = useRef<HTMLDivElement>(null);
+
+	// Whole illustration drifts gently against the scroll for a subtle
+	// parallax feel as it passes through the viewport.
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ["start end", "end start"],
+	});
+	const y = useTransform(
+		scrollYProgress,
+		[0, 1],
+		shouldReduceMotion ? [0, 0] : [-20, 20],
+	);
+
 	return (
-		<div className="relative mx-auto aspect-4/5 w-full max-w-100">
+		<motion.div
+			ref={containerRef}
+			style={{ y }}
+			initial={{ opacity: 0, scale: 0.94 }}
+			whileInView={{ opacity: 1, scale: 1 }}
+			viewport={{ once: true, amount: 0.3 }}
+			transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+			className="relative mx-auto aspect-4/5 w-full max-w-100"
+		>
 			{/* Background blob */}
 			<Image
 				src={Background}
@@ -86,6 +132,9 @@ export default function FounderBanner() {
 				alt="icon"
 				variant="bare"
 				className="left-[20%] top-[15%]"
+				delay={0}
+				floatOffset={8}
+				floatDuration={3.2}
 			/>
 
 			{/* Right top - Price Tag */}
@@ -94,6 +143,9 @@ export default function FounderBanner() {
 				alt="icon"
 				variant="bare"
 				className="right-[25%] top-[7%]"
+				delay={0.15}
+				floatOffset={6}
+				floatDuration={2.6}
 			/>
 
 			{/* Left middle - Phone */}
@@ -103,6 +155,9 @@ export default function FounderBanner() {
 				size={24}
 				variant="bare"
 				className="left-[8%] top-[30%]"
+				delay={0.3}
+				floatOffset={9}
+				floatDuration={3.6}
 			/>
 
 			{/* Left bottom - Truck */}
@@ -111,6 +166,9 @@ export default function FounderBanner() {
 				alt="icon"
 				variant="bare"
 				className="left-[25%] top-[42%]"
+				delay={0.1}
+				floatOffset={7}
+				floatDuration={2.8}
 			/>
 
 			{/* Right middle - Person */}
@@ -120,6 +178,9 @@ export default function FounderBanner() {
 				variant="bare"
 				size={30}
 				className="right-[2%] top-[30%]"
+				delay={0.25}
+				floatOffset={10}
+				floatDuration={3.4}
 			/>
 
 			{/* Right middle - Calender */}
@@ -129,6 +190,9 @@ export default function FounderBanner() {
 				variant="bare"
 				size={26}
 				className="right-[20%] top-[20%]"
+				delay={0.35}
+				floatOffset={6}
+				floatDuration={3}
 			/>
 
 			{/* Right bottom - Quote */}
@@ -138,7 +202,10 @@ export default function FounderBanner() {
 				variant="bare"
 				size={30}
 				className="right-[22%] bottom-[55%]"
+				delay={0.2}
+				floatOffset={8}
+				floatDuration={2.9}
 			/>
-		</div>
+		</motion.div>
 	);
 }

@@ -71,14 +71,14 @@ export function ContactHero() {
 							{contactMethods.map(({ icon: Icon, title, lines }) => (
 								<div
 									key={title}
-									className="flex items-center justify-start gap-4 rounded-xl border border-gray-100 bg-white px-4 py-4 shadow-sm"
+									className="group flex items-center justify-start gap-4 rounded-xl border border-gray-100 bg-white px-4 py-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-200 hover:shadow-md"
 								>
 									<Image
 										src={Icon}
 										alt={title}
 										width={28}
 										height={28}
-										className="h-12 w-12 object-cover"
+										className="h-12 w-12 object-cover transition-transform duration-200 group-hover:scale-110"
 										aria-hidden="true"
 									/>
 
@@ -166,7 +166,7 @@ export function ContactHero() {
 								>
 									Subject
 								</label>
-								<div className="relative">
+								<div className="group relative">
 									<select
 										id="subject"
 										name="subject"
@@ -183,7 +183,7 @@ export function ContactHero() {
 										))}
 									</select>
 									<ChevronDown
-										className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+										className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-200 group-hover:text-primary-foreground"
 										aria-hidden="true"
 									/>
 								</div>
@@ -207,10 +207,13 @@ export function ContactHero() {
 
 							<button
 								type="submit"
-								className="inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+								className="group inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
 							>
 								Send Message
-								<Send className="h-4 w-4" aria-hidden="true" />
+								<Send
+									className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+									aria-hidden="true"
+								/>
 							</button>
 						</form>
 					</div>
