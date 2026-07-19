@@ -147,20 +147,20 @@ export function Footer() {
 									href={link}
 									target="_blank"
 									aria-label={label}
-									className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-primary-background hover:text-primary-foreground"
+									className="flex h-6 w-6 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-primary-background hover:text-primary-foreground"
 								>
 									<Image
 										src={Icon}
 										alt={label}
 										width={16}
 										height={16}
-										className="h-6 w-6"
+										className="h-4 w-4 sm:h-6 sm:w-6"
 										aria-hidden="true"
 									/>
 								</a>
 							))}
 						</div>
-						<p className="mt-4 flex items-center gap-1.5 text-xs font-medium text-gray-500 sm:text-sm">
+						<p className="mt-4 flex items-center gap-1 sm:gap-1.5 text-xs font-medium text-gray-500 sm:text-sm">
 							<span>Made with</span>
 							<Heart
 								className="h-3.5 w-3.5 fill-red-500 text-red-500"

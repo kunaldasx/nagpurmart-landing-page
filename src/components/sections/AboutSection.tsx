@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "../layout/Container";
-import { useInView, useParallax } from "@/hooks/useScrollAnimation";
+import { useInView } from "@/hooks/useScrollAnimation";
 import {
 	Feature1,
 	Feature2,
@@ -67,7 +67,6 @@ const values: Value[] = [
 
 function AboutHero() {
 	const [loaded, setLoaded] = useState(false);
-	const bgRef = useParallax<HTMLDivElement>(0.12);
 
 	useEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
@@ -143,12 +142,12 @@ function AboutHero() {
 				</div>
 
 				<div
-					className={`relative w-full aspect-[1.3/1] overflow-hidden rounded-[48px] bg-gray-100 transition-all duration-1000 ${
+					className={`relative w-full aspect-[1.3/1] overflow-hidden rounded-2xl sm:rounded-[48px] bg-gray-100 transition-all duration-1000 ${
 						loaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
 					}`}
 				>
 					{/* Background — drifts on scroll for a parallax feel */}
-					<div ref={bgRef} className="absolute inset-0">
+					<div className="absolute inset-0">
 						<Image
 							src={BannerBg}
 							alt="NagpurMart Banner"
@@ -162,7 +161,7 @@ function AboutHero() {
 					<Image
 						src={BannerPhone}
 						alt="NagpurMart mobile app"
-						className="absolute left-1/2 top-[53%] z-10 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain animate-float"
+						className="absolute left-1/2 top-[53%] z-10 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
 					/>
 				</div>
 			</div>

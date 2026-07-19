@@ -213,9 +213,9 @@ export function BrandStory() {
 						duration: shouldReduceMotion ? 0.01 : 0.6,
 						ease: [0.22, 1, 0.36, 1],
 					}}
-					className="flex flex-col items-center gap-8 bg-primary-background rounded-2xl md:flex-row p-8 sm:p-10 lg:p-12"
+					className="flex flex-col items-center gap-8 rounded-2xl bg-primary-background p-8 sm:p-10 lg:p-12 md:flex-row"
 				>
-					<div className="relative h-full w-150 md:h-80">
+					<div className="relative h-64 w-full md:h-80 md:w-1/2 lg:w-[40%]">
 						<motion.div
 							style={{ y }}
 							whileHover={shouldReduceMotion ? undefined : { scale: 1.06 }}
@@ -497,7 +497,7 @@ export function AppDownload() {
 						<DisplayQrCode />
 					</div>
 
-					<div className="flex flex-col gap-3">
+					<div className="max-sm:w-full flex flex-col gap-3">
 						<AppStoreBtn />
 						<PlayStoreBtn />
 					</div>
@@ -582,7 +582,7 @@ export function TrustBadges() {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 					variants={badgesContainerVariants}
-					className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-8"
+					className="mt-10 flex flex-wrap justify-center gap-x-4 sm:gap-x-10 gap-y-8"
 				>
 					{trustBadges.map((badge) => (
 						<motion.div

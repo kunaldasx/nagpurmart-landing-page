@@ -133,7 +133,7 @@ export default function FounderBanner() {
 				variant="bare"
 				className="left-[20%] top-[15%]"
 				delay={0}
-				floatOffset={8}
+				floatOffset={4}
 				floatDuration={3.2}
 			/>
 
@@ -144,7 +144,7 @@ export default function FounderBanner() {
 				variant="bare"
 				className="right-[25%] top-[7%]"
 				delay={0.15}
-				floatOffset={6}
+				floatOffset={3}
 				floatDuration={2.6}
 			/>
 
@@ -156,7 +156,7 @@ export default function FounderBanner() {
 				variant="bare"
 				className="left-[8%] top-[30%]"
 				delay={0.3}
-				floatOffset={9}
+				floatOffset={4.5}
 				floatDuration={3.6}
 			/>
 
@@ -167,7 +167,7 @@ export default function FounderBanner() {
 				variant="bare"
 				className="left-[25%] top-[42%]"
 				delay={0.1}
-				floatOffset={7}
+				floatOffset={3.5}
 				floatDuration={2.8}
 			/>
 
@@ -179,7 +179,7 @@ export default function FounderBanner() {
 				size={30}
 				className="right-[2%] top-[30%]"
 				delay={0.25}
-				floatOffset={10}
+				floatOffset={5}
 				floatDuration={3.4}
 			/>
 
@@ -191,7 +191,7 @@ export default function FounderBanner() {
 				size={26}
 				className="right-[20%] top-[20%]"
 				delay={0.35}
-				floatOffset={6}
+				floatOffset={3}
 				floatDuration={3}
 			/>
 
@@ -203,7 +203,7 @@ export default function FounderBanner() {
 				size={30}
 				className="right-[22%] bottom-[55%]"
 				delay={0.2}
-				floatOffset={8}
+				floatOffset={4}
 				floatDuration={2.9}
 			/>
 		</motion.div>

@@ -76,8 +76,8 @@ function ProductShowcase() {
 	function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
 		if (shouldReduceMotion) return;
 		const rect = e.currentTarget.getBoundingClientRect();
-		mvX.set(((e.clientX - rect.left) / rect.width - 0.5) * 2);
-		mvY.set(((e.clientY - rect.top) / rect.height - 0.5) * 2);
+		mvX.set((e.clientX - rect.left) / rect.width - 0.5);
+		mvY.set((e.clientY - rect.top) / rect.height - 0.5);
 	}
 
 	function handleMouseLeave() {
@@ -101,7 +101,7 @@ function ProductShowcase() {
 			>
 				<motion.div
 					className="relative h-full w-full"
-					animate={shouldReduceMotion ? undefined : { y: [0, -10, 0] }}
+					animate={shouldReduceMotion ? undefined : { y: [0, -5, 0] }}
 					transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
 				>
 					<Image
@@ -122,7 +122,7 @@ function ProductShowcase() {
 			>
 				<motion.div
 					className="relative h-full w-full"
-					animate={shouldReduceMotion ? undefined : { y: [0, 12, 0] }}
+					animate={shouldReduceMotion ? undefined : { y: [0, 6, 0] }}
 					transition={{
 						duration: 6,
 						repeat: Infinity,
@@ -147,7 +147,7 @@ function ProductShowcase() {
 			>
 				<motion.div
 					className="relative h-full w-full"
-					animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+					animate={shouldReduceMotion ? undefined : { y: [0, -4, 0] }}
 					transition={{
 						duration: 4.5,
 						repeat: Infinity,

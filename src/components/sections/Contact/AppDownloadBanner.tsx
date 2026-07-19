@@ -30,12 +30,12 @@ export function AppDownloadBanner() {
 						</p>
 					</div>
 					{/* QR + store badges */}
-					<div className="flex items-center gap-4">
+					<div className="flex flex-wrap justify-center items-center gap-4">
 						<div className="nm-pulse-ring rounded-2xl">
 							<DisplayQrCode />
 						</div>
 
-						<div className="flex flex-col gap-2">
+						<div className="max-sm:w-full flex flex-col gap-2">
 							<AppStoreBtn />
 							<PlayStoreBtn />
 						</div>

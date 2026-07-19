@@ -94,8 +94,8 @@ function PhoneBanner() {
 
 		const rect = e.currentTarget.getBoundingClientRect();
 
-		mvX.set(((e.clientX - rect.left) / rect.width - 0.5) * 2);
-		mvY.set(((e.clientY - rect.top) / rect.height - 0.5) * 2);
+		mvX.set((e.clientX - rect.left) / rect.width - 0.5);
+		mvY.set((e.clientY - rect.top) / rect.height - 0.5);
 	}
 
 	function handleMouseLeave() {
@@ -128,7 +128,7 @@ function PhoneBanner() {
 						shouldReduceMotion
 							? undefined
 							: {
-									y: [0, -3, 0],
+									y: [0, -2, 0],
 									scale: [1, 1.02, 1],
 								}
 					}
@@ -149,7 +149,7 @@ function PhoneBanner() {
 
 			{/* Grocery Bag */}
 			<motion.div
-				className="absolute bottom-0 right-[24%] z-10 w-[38%]"
+				className="absolute bottom-[-10%] right-[24%] z-10 w-[38%]"
 				style={{
 					x: bagX,
 					y: bagY,
@@ -160,7 +160,7 @@ function PhoneBanner() {
 						shouldReduceMotion
 							? undefined
 							: {
-									y: [0, -5, 0],
+									y: [0, -4, 0],
 									rotate: [0, 1.5, 0],
 								}
 					}
@@ -181,7 +181,7 @@ function PhoneBanner() {
 
 			{/* Phone */}
 			<motion.div
-				className="absolute left-[5%] top-[40%] z-20 w-[46%]"
+				className="absolute left-[5%] top-[45%] z-20 w-[46%]"
 				style={{
 					x: phoneX,
 					y: phoneY,
@@ -192,7 +192,7 @@ function PhoneBanner() {
 						shouldReduceMotion
 							? undefined
 							: {
-									y: [0, -6, 0],
+									y: [0, -5, 0],
 								}
 					}
 					transition={{
@@ -304,17 +304,18 @@ function AppHero() {
 
 						<div
 							className={clsx(
-								"mt-8 flex flex-wrap items-center gap-3 transition-all duration-700 ease-out",
+								"mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center transition-all duration-700 ease-out",
 								mounted
-									? "opacity-100 translate-y-0"
-									: "opacity-0 translate-y-4",
+									? "translate-y-0 opacity-100"
+									: "translate-y-4 opacity-0",
 							)}
 							style={{ transitionDelay: mounted ? "560ms" : "0ms" }}
 						>
-							<div className="transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:scale-105">
+							<div className="w-full sm:w-auto transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:scale-105">
 								<AppStoreBtn />
 							</div>
-							<div className="transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:scale-105">
+
+							<div className="w-full sm:w-auto transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:scale-105">
 								<PlayStoreBtn />
 							</div>
 						</div>
@@ -564,7 +565,6 @@ export function DownloadSteps() {
 					</div>
 				</div>
 			</Container>
-			s
 		</section>
 	);
 }

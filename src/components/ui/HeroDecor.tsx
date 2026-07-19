@@ -107,24 +107,27 @@ function BagIcon({ className }: IconProps) {
 function LeafIcon({ className }: IconProps) {
 	return (
 		<svg viewBox="0 0 64 64" className={className} aria-hidden="true">
-			<ellipse
-				cx="32"
-				cy="26"
-				rx="7"
-				ry="17"
-				fill="#4ADE80"
-				transform="rotate(-24 32 26)"
-			/>
-			<ellipse cx="32" cy="24" rx="7.5" ry="19" fill="#22C55E" />
-			<ellipse
-				cx="32"
-				cy="26"
-				rx="7"
-				ry="17"
-				fill="#4ADE80"
-				transform="rotate(24 32 26)"
-			/>
-			<rect x="27" y="42" width="10" height="15" rx="5" fill="#16A34A" />
+			<g transform="rotate(-8 32 32)">
+				<path
+					d="M32 48 Q31 58 32 60"
+					stroke="#16A34A"
+					strokeWidth="7"
+					strokeLinecap="round"
+					fill="none"
+				/>
+				<path
+					d="M32 9 C34 14 46 22 46 32 C46 42 34 50 32 55 C30 50 18 42 18 32 C18 22 30 14 32 9 Z"
+					fill="#22C55E"
+				/>
+				<ellipse cx="27" cy="28" rx="5" ry="13" fill="#4ADE80" />
+				<path
+					d="M32 15 Q34 32 32 49"
+					stroke="#16A34A"
+					strokeWidth="2"
+					strokeLinecap="round"
+					fill="none"
+				/>
+			</g>
 		</svg>
 	);
 }
@@ -151,13 +154,13 @@ export const FLOATING_ITEMS: FloatingItem[] = [
 	{
 		id: "basket",
 		Icon: BasketIcon,
-		position: "left-[-4%] top-[3%] md:left-[-13%] md:top-[7%]",
+		position: "left-[-13%] top-[3%] md:left-[-13%] md:top-[7%]",
 		size: "h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24",
 		duration: 5,
 		delay: 0,
 		depth: 14,
 		rotateRange: 5,
-		behindPhone: true,
+		behindPhone: false,
 	},
 	{
 		id: "milk",
@@ -182,8 +185,7 @@ export const FLOATING_ITEMS: FloatingItem[] = [
 	{
 		id: "leaf",
 		Icon: LeafIcon,
-		position:
-			"left-[-2%] bottom-[15%] hidden sm:block md:left-[-7%] md:bottom-[17%]",
+		position: "left-[-2%] bottom-[15%] md:left-[-7%] md:bottom-[17%]",
 		size: "h-10 w-10 md:h-14 md:w-14",
 		duration: 4.2,
 		delay: 0.3,

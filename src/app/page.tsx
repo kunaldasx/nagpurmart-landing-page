@@ -23,9 +23,9 @@ export default function Home() {
 				<Features />
 				<CareersSection />
 				<ContactPage />
-				<Footer />
-				<TrustBar />
 			</main>
+			<Footer />
+			<TrustBar />
 		</>
 	);
 }

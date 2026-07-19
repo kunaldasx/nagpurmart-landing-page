@@ -265,13 +265,6 @@ export function Journey() {
 						aria-hidden="true"
 						className="absolute left-0 right-0 top-18.75 hidden h-0.5 bg-slate-200 lg:block"
 					/>
-					{/* Animated progress line layered on top of it */}
-					{/* <motion.div
-						aria-hidden="true"
-						style={{ scaleX: shouldReduceMotion ? 1 : lineProgress }}
-						className="absolute left-0 top-18.75 hidden h-0.5 w-full origin-left bg-primary-foreground lg:block"
-					/> */}
-
 					<motion.div
 						{...revealOnScroll(0.1)}
 						variants={staggerParent}

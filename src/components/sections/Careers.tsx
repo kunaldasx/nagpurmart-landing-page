@@ -320,7 +320,7 @@ export default function CareersSection() {
 							</div>
 
 							{/* Location & Job Type */}
-							<div className="flex items-center gap-6 pl-19 lg:justify-start lg:pl-0">
+							<div className="flex items-center gap-2 sm:gap-6 pl-19 lg:justify-start lg:pl-0">
 								<div className="flex items-center gap-2 whitespace-nowrap text-xs font-medium text-gray-500 sm:text-sm">
 									<MapPin className="h-4 w-4 shrink-0 text-gray-400" />
 									<span>{job.location}</span>
