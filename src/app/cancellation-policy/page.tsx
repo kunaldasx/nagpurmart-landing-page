@@ -1,3 +1,4 @@
+import { AppDownloadBanner } from "@/components/sections/AppDownloadBanner";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/sections/Navbar";
 import Policy from "@/components/sections/Policy";
@@ -150,6 +151,7 @@ const CancellationPolicy = () => {
 					clauses={clauses}
 				/>
 			</main>
+			<AppDownloadBanner />
 			<Footer />
 			<TrustBar />
 		</>

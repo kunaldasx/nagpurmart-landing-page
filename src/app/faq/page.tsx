@@ -1,15 +1,15 @@
 import { AppDownloadBanner } from "@/components/sections/AppDownloadBanner";
-import ContactPage from "@/components/sections/Contact";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/sections/Navbar";
 import { TrustBar } from "@/components/sections/TrustBar";
 
-const Contact = () => {
+const FAQ = () => {
 	return (
 		<>
 			<Navbar />
-			<main className="mt-8 sm:mt-20">
-				<ContactPage />
+			<main className="mt-20">
+				<FaqSection />
 			</main>
 			<AppDownloadBanner />
 			<Footer />
@@ -18,4 +18,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default FAQ;

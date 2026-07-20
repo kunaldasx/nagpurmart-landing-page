@@ -9,6 +9,8 @@ import CareersSection from "@/components/sections/Careers";
 import { Footer } from "@/components/sections/Footer";
 import { TrustBar } from "@/components/sections/TrustBar";
 import ContactPage from "@/components/sections/Contact";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { AppDownloadBanner } from "@/components/sections/AppDownloadBanner";
 
 export default function Home() {
 	return (
@@ -23,7 +25,9 @@ export default function Home() {
 				<Features />
 				<CareersSection />
 				<ContactPage />
+				<FaqSection />
 			</main>
+			<AppDownloadBanner />
 			<Footer />
 			<TrustBar />
 		</>

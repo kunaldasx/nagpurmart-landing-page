@@ -1,3 +1,4 @@
+import { AppDownloadBanner } from "@/components/sections/AppDownloadBanner";
 import Features from "@/components/sections/Features";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/sections/Navbar";
@@ -10,6 +11,7 @@ const Feature = () => {
 			<main className="mt-20">
 				<Features />
 			</main>
+			<AppDownloadBanner />
 			<Footer />
 			<TrustBar />
 		</>

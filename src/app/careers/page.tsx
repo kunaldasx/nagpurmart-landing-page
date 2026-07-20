@@ -1,3 +1,4 @@
+import { AppDownloadBanner } from "@/components/sections/AppDownloadBanner";
 import CareersSection from "@/components/sections/Careers";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/sections/Navbar";
@@ -10,6 +11,7 @@ const Careers = () => {
 			<main className="mt-8 sm:mt-12">
 				<CareersSection />
 			</main>
+			<AppDownloadBanner />
 			<Footer />
 			<TrustBar />
 		</>
