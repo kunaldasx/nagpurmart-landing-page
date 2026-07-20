@@ -7,7 +7,7 @@ const Careers = () => {
 	return (
 		<>
 			<Navbar />
-			<main>
+			<main className="mt-8 sm:mt-12">
 				<CareersSection />
 			</main>
 			<Footer />

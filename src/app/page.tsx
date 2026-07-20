@@ -6,9 +6,9 @@ import FounderSection from "@/components/sections/Founder";
 import AboutSection from "@/components/sections/AboutSection";
 import Features from "@/components/sections/Features";
 import CareersSection from "@/components/sections/Careers";
-import ContactPage from "@/components/sections/Contact/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { TrustBar } from "@/components/sections/TrustBar";
+import ContactPage from "@/components/sections/Contact";
 
 export default function Home() {
 	return (

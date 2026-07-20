@@ -7,7 +7,7 @@ const Feature = () => {
 	return (
 		<>
 			<Navbar />
-			<main>
+			<main className="mt-20">
 				<Features />
 			</main>
 			<Footer />

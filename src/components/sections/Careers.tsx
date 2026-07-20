@@ -113,7 +113,7 @@ export default function CareersSection() {
 	return (
 		<div className="bg-white py-8">
 			{/* Careers Hero */}
-			<section ref={heroRef} className="bg-[#F8FAFC] py-12 sm:py-16 lg:py-20">
+			<section ref={heroRef} className="bg-[#F8FAFC] py-16">
 				<Container>
 					<div className="grid items-center justify-center gap-8 lg:grid-cols-2">
 						{/* Left Content */}

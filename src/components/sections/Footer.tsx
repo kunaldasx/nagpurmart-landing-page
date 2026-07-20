@@ -13,12 +13,16 @@ const companyLinks = [
 		link: "/about",
 	},
 	{
+		label: "Features",
+		link: "/features",
+	},
+	{
 		label: "Careers",
 		link: "/careers",
 	},
 	{
-		label: "Features",
-		link: "/features",
+		label: "Brand Integration",
+		link: "/brand-integration",
 	},
 	{
 		label: "Contact Us",

@@ -95,12 +95,12 @@ ${form.message}`;
 	};
 
 	return (
-		<section className="py-16 sm:py-20">
+		<section className="py-16">
 			<Container>
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
 					{/* Left column: intro + contact methods */}
 					<div>
-						<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-base sm:text-lg font-bold tracking-wider uppercase">
+						<span className="inline-block border-b-2 border-primary-foreground pb-1.5 text-base font-bold tracking-wider uppercase">
 							Contact Us
 						</span>
 

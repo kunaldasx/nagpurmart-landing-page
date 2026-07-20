@@ -1,14 +1,15 @@
-import AboutSection from "@/components/sections/AboutSection";
+import { BrandIntegration } from "@/components/sections/BrandIntegration";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/sections/Navbar";
 import { TrustBar } from "@/components/sections/TrustBar";
+import React from "react";
 
-const About = () => {
+const BrandIntegrationPage = () => {
 	return (
 		<>
 			<Navbar />
-			<main className="mt-8 sm:mt-20">
-				<AboutSection />
+			<main className="mt-12">
+				<BrandIntegration />
 			</main>
 			<Footer />
 			<TrustBar />
@@ -16,4 +17,4 @@ const About = () => {
 	);
 };
 
-export default About;
+export default BrandIntegrationPage;

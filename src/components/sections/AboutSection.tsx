@@ -74,7 +74,7 @@ function AboutHero() {
 	}, []);
 
 	return (
-		<Container as="section" className="py-16 sm:py-20">
+		<Container as="section" className="py-16">
 			<div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 				<div>
 					<span

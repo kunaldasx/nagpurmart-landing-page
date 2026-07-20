@@ -177,7 +177,7 @@ const badges = [
 
 export function Hero() {
 	return (
-		<section className="bg-linear-to-b from-blue-50 to-white py-8">
+		<section className="bg-linear-to-b from-blue-50 to-white py-16">
 			<Container>
 				<div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-10">
 					<motion.div
