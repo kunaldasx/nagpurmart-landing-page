@@ -447,12 +447,12 @@ const downloadSteps: { icon: string; scale: string; description: string }[] = [
 	{
 		icon: SearchBox,
 		scale: "w-24 h-24",
-		description: 'Search Krein "NagpurMart"',
+		description: 'Search Krein "Nagpurmart"',
 	},
 	{
 		icon: "/images/logo.png",
 		scale: "w-12 h-12",
-		description: "NagpurMart App Install Karein",
+		description: "Nagpurmart.in App Install Karein",
 	},
 	{
 		icon: ShoppingBasket,
@@ -554,7 +554,7 @@ export function DownloadSteps() {
 
 					<div className="flex w-full max-w-xs flex-col items-center gap-4 rounded-3xl bg-primary-foreground p-6 text-center transition-transform duration-300 ease-out hover:scale-[1.03]">
 						<h3 className="text-base font-bold text-white">
-							Scan & Download NagpurMart App
+							Scan & Download Nagpurmart.in App
 						</h3>
 						<div className="nm-pulse-ring rounded-2xl">
 							<DisplayQrCode />

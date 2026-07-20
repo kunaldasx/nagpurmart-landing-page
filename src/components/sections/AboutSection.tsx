@@ -92,7 +92,7 @@ function AboutHero() {
 								: "opacity-0 translate-y-3"
 						}`}
 					>
-						<span className="block">NagpurMart.in</span>
+						<span className="block">Nagpurmart.in</span>
 						<span className="block text-primary-foreground">
 							Har Zarurat, Ek App.
 						</span>
@@ -105,7 +105,7 @@ function AboutHero() {
 								: "opacity-0 translate-y-3"
 						}`}
 					>
-						NagpurMart.in ek local super app hai jo nagpur ke logo ko groceries,
+						Nagpurmart.in ek local super app hai jo nagpur ke logo ko groceries,
 						electronics, fashion, pharmacy aur bahut kuch best price mein,
 						fastest delivery ke saath provide karta hai.
 					</p>
@@ -150,7 +150,7 @@ function AboutHero() {
 					<div className="absolute inset-0">
 						<Image
 							src={BannerBg}
-							alt="NagpurMart Banner"
+							alt="Nagpurmart Banner"
 							fill
 							priority
 							className="object-cover"
@@ -160,7 +160,7 @@ function AboutHero() {
 					{/* Phone mockup — gentle idle float */}
 					<Image
 						src={BannerPhone}
-						alt="NagpurMart mobile app"
+						alt="Nagpurmart mobile app"
 						className="absolute left-1/2 top-[53%] z-10 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
 					/>
 				</div>
@@ -187,7 +187,7 @@ function OurStory() {
 					Humari Kahani, Aapke Liye
 				</h2>
 				<p className="mt-6 text-sm font-medium leading-relaxed text-gray-500">
-					NagpurMart.in ki shuruaat ek simple idea se hui - Nagpur ke logo ko ek
+					Nagpurmart.in ki shuruaat ek simple idea se hui - Nagpur ke logo ko ek
 					aisa platform dena jahan unhe har category ke product best price mein,
 					aasani se aur bharose ke saath mil sake.
 				</p>

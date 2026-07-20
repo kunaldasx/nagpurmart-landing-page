@@ -121,7 +121,7 @@ export default function FounderBanner() {
 			{/* Founder */}
 			<Image
 				src={FounderImg}
-				alt="Founder of NagpurMart.in"
+				alt="Founder of Nagpurmart.in"
 				priority
 				className="absolute bottom-0 left-1/2 z-10 h-[88%] w-auto max-w-[82%] -translate-x-1/2 object-contain object-bottom"
 			/>

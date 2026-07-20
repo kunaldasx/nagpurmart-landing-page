@@ -228,7 +228,7 @@ export default function Hero() {
 							>
 								<Image
 									src={Banner}
-									alt="NagpurMart App"
+									alt="Nagpurmart App"
 									fill
 									className="object-contain"
 									priority

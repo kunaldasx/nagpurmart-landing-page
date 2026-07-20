@@ -144,7 +144,7 @@ export default function CareersSection() {
 								className="mt-7 max-w-125 space-y-4 text-sm font-medium leading-relaxed sm:text-base"
 							>
 								<p>
-									At NagpurMart.in, we are on a mission to make shopping simple,
+									At Nagpurmart.in, we are on a mission to make shopping simple,
 									affordable and fast for every household in Nagpur.
 								</p>
 
@@ -181,7 +181,7 @@ export default function CareersSection() {
 								>
 									<Image
 										src={Banner}
-										alt="NagpurMart team"
+										alt="Nagpurmart team"
 										height={100}
 										width={100}
 										className="h-full w-full object-cover"

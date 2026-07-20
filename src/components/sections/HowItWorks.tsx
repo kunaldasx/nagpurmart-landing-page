@@ -297,7 +297,7 @@ export function OurStory() {
 							Our Brand Story
 						</h3>
 						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-							NagpurMart.in ki shuruaat ek simple idea se hui - Nagpur ke logo
+							Nagpurmart.in ki shuruaat ek simple idea se hui - Nagpur ke logo
 							ko ek bharosemand, sasta aur fast shopping experience dena.
 						</p>
 						<p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
@@ -486,7 +486,7 @@ export function AppDownload() {
 				>
 					<div className="max-w-lg">
 						<h3 className="text-xl font-bold text-white sm:text-2xl">
-							Download NagpurMart App
+							Download Nagpurmart App
 						</h3>
 						<p className="max-w-xs mt-2 text-sm font-medium text-blue-100 sm:text-base">
 							Aur paayein Best Price, Fast Delivery aur Amazing Offers!

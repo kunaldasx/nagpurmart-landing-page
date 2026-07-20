@@ -106,7 +106,7 @@ function ProductShowcase() {
 				>
 					<Image
 						src={Banner1}
-						alt="NagpurMart mobile app"
+						alt="Nagpurmart mobile app"
 						fill
 						priority
 						sizes="(max-width: 768px) 43vw, 260px"
@@ -203,7 +203,7 @@ export function Hero() {
 							variants={fadeUp}
 							className="mt-5 max-w-md text-sm font-medium leading-relaxed text-gray-500 sm:text-base"
 						>
-							NagpurMart.in aapko deta hai best quality products, best prices
+							Nagpurmart.in aapko deta hai best quality products, best prices
 							aur fastest delivery ka vaada.
 						</motion.p>
 

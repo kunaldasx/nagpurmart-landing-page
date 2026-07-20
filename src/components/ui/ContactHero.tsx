@@ -28,7 +28,7 @@ const contactMethods: ContactMethod[] = [
 	{
 		icon: Contact3,
 		title: "Visit Us",
-		lines: ["NagpurMart's H.No 43, Sitabuldi, Nagpur - 440001, Maharashtra"],
+		lines: ["Nagpurmart's H.No 43, Sitabuldi, Nagpur - 440001, Maharashtra"],
 	},
 	{
 		icon: Contact4,

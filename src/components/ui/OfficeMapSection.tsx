@@ -28,7 +28,7 @@ export function OfficeMapSection() {
 							<div>
 								<h3 className="font-semibold text-gray-900">Our Office</h3>
 								<p className="mt-1 text-sm font-medium text-gray-500">
-									NagpurMart&apos;s Pvt Ltd, 43 Sitabuldi, Nagpur - 440001,
+									Nagpurmart&apos;s Pvt Ltd, 43 Sitabuldi, Nagpur - 440001,
 									Maharashtra, India
 								</p>
 							</div>

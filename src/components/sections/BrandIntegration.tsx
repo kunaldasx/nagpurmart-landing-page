@@ -352,7 +352,7 @@ export function BrandIntegration() {
 						</h2>
 
 						<p className="mt-4 max-w-md text-sm font-medium text-gray-500 sm:text-base">
-							Join NagpurMart&apos;s growing network of local sellers. Fill in
+							Join Nagpurmart&apos;s growing network of local sellers. Fill in
 							your details once, and our team will help you get set up.
 						</p>
 

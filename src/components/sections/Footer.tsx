@@ -64,7 +64,7 @@ const legalLinks = [
 	},
 	{
 		label: "Refund Policy",
-		link: "/refund-policy",
+		link: "/return-and-refund-policy",
 	},
 	{
 		label: "Privacy Policy",
@@ -135,7 +135,7 @@ export function Footer() {
 							Har Chiz, Sabse Sasta, Sabse Accha
 						</p>
 						<p className="mt-4 text-xs font-medium text-gray-400">
-							&copy; 2026 NagpurMart&apos;s Pvt Ltd. All Rights Reserved.
+							&copy; 2026 Nagpurmart&apos;s Pvt Ltd. All Rights Reserved.
 						</p>
 					</div>
 					<FooterColumn title="Company" links={companyLinks} />

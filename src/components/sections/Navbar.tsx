@@ -78,14 +78,14 @@ export function Navbar() {
 					>
 						<Image
 							src="/images/logo.png"
-							alt="NagpurMart"
+							alt="Nagpurmart"
 							width={40}
 							height={40}
 							priority
 						/>
 						<Image
 							src="/images/logo-text.png"
-							alt="NagpurMart"
+							alt="Nagpurmart"
 							width={100}
 							height={100}
 							priority

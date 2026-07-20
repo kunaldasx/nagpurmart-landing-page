@@ -112,7 +112,7 @@ function FounderIntro() {
 							variants={fadeInUp(shouldReduceMotion, 0.2)}
 							className="mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-600 sm:text-base"
 						>
-							NagpurMart.in ki shuruaat ek sapne se hui - Nagpur ke logo ko aisa
+							Nagpurmart.in ki shuruaat ek sapne se hui - Nagpur ke logo ko aisa
 							platform dena jahan unhe har category ke product best price mein,
 							fastest delivery ke sath mil sake.
 						</motion.p>
@@ -181,7 +181,7 @@ function FounderIntro() {
 								Founder & CEO
 							</p>
 							<p className="text-xs font-medium text-slate-500">
-								NagpurMart.in
+								Nagpurmart.in
 							</p>
 						</motion.div>
 					</div>
@@ -217,9 +217,9 @@ const journey: {
 	},
 	{
 		year: "2021",
-		title: "NagpurMart.in Launched",
+		title: "Nagpurmart.in Launched",
 		description:
-			"NagpurMart.in ko officially launch kiya Nagpur ke logo ke liye",
+			"Nagpurmart.in ko officially launch kiya Nagpur ke logo ke liye",
 		icon: Journey3,
 	},
 	{
