@@ -44,7 +44,7 @@ interface BrandForm {
 	locationQuery: string;
 	address: string;
 	city: string;
-	landmark: string;
+	landmark?: string;
 	state: string;
 	zipcode: string;
 	country: string;
@@ -295,7 +295,7 @@ export function BrandIntegration() {
 					<div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/45 to-black/25" />
 
 					<div className="relative max-w-2xl">
-						<span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-900 sm:text-sm">
+						<span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white sm:text-sm">
 							<Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
 							Register Your Brand With Us
 						</span>
@@ -305,14 +305,14 @@ export function BrandIntegration() {
 							<span className="text-primary-foreground">Nagpurmart.in</span>
 						</h1>
 
-						<p className="mt-4 text-sm font-medium text-blue-100 sm:text-base">
+						<p className="mt-4 text-sm font-medium text-white sm:text-base">
 							Register your brand with us. Enable online ordering, manage your
 							catalog, and connect fulfillment options that fit your operations.
 						</p>
 
 						<a
 							href="#brand-registration-form"
-							className="group mt-7 inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-2.5 text-sm font-semibold text-gray-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-foreground/70 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-primary-foreground"
+							className="group mt-7 inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-foreground/70 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-primary-foreground"
 						>
 							Register Now
 							<ArrowRight
@@ -322,7 +322,7 @@ export function BrandIntegration() {
 						</a>
 					</div>
 
-					<div className="relative mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/15 pt-6">
+					<div className="relative mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/90 pt-6">
 						{bannerFeatures.map((feature) => (
 							<span
 								key={feature}
@@ -357,24 +357,22 @@ export function BrandIntegration() {
 						</p>
 
 						<div className="mt-10 space-y-5">
-							{registrationSteps.map(
-								({ icon: Icon, title, description }, index) => (
-									<div
-										key={title}
-										className="group flex items-start gap-4 rounded-xl border border-gray-100 bg-white px-4 py-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-200 hover:shadow-md"
-									>
-										<span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-primary-foreground transition-transform duration-200 group-hover:scale-107">
-											<Icon className="h-5 w-5" aria-hidden="true" />
-										</span>
-										<div>
-											<h3 className="font-semibold text-gray-900">{title}</h3>
-											<p className="text-sm font-medium text-gray-500">
-												{description}
-											</p>
-										</div>
+							{registrationSteps.map(({ icon: Icon, title, description }) => (
+								<div
+									key={title}
+									className="group flex items-start gap-4 rounded-xl border border-gray-100 bg-white px-4 py-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-200 hover:shadow-md"
+								>
+									<span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-primary-foreground transition-transform duration-200 group-hover:scale-107">
+										<Icon className="h-5 w-5" aria-hidden="true" />
+									</span>
+									<div>
+										<h3 className="font-semibold text-gray-900">{title}</h3>
+										<p className="text-sm font-medium text-gray-500">
+											{description}
+										</p>
 									</div>
-								),
-							)}
+								</div>
+							))}
 						</div>
 					</div>
 
@@ -610,7 +608,7 @@ export function BrandIntegration() {
 											required
 											value={form.address}
 											onChange={handleChange}
-											placeholder="e.g. 123, Shree Complex, Station Road"
+											placeholder="e.g. Plot 12, Wardha Road, Nagpur"
 											className={inputClasses}
 										/>
 									</div>
@@ -627,22 +625,21 @@ export function BrandIntegration() {
 												required
 												value={form.city}
 												onChange={handleChange}
-												placeholder="e.g. Bhuj"
+												placeholder="e.g. Nagpur"
 												className={inputClasses}
 											/>
 										</div>
 										<div>
 											<label htmlFor="landmark" className={labelClasses}>
-												Landmark <span className="text-red-500">*</span>
+												Landmark
 											</label>
 											<input
 												id="landmark"
 												name="landmark"
 												type="text"
-												required
 												value={form.landmark}
 												onChange={handleChange}
-												placeholder="e.g. Near Bus Stand"
+												placeholder="e.g. Near Zero Mile"
 												className={inputClasses}
 											/>
 										</div>
@@ -660,7 +657,7 @@ export function BrandIntegration() {
 												required
 												value={form.state}
 												onChange={handleChange}
-												placeholder="e.g. Gujarat"
+												placeholder="e.g. Maharashtra"
 												className={inputClasses}
 											/>
 										</div>
@@ -676,7 +673,7 @@ export function BrandIntegration() {
 												required
 												value={form.zipcode}
 												onChange={handleChange}
-												placeholder="e.g. 370001"
+												placeholder="e.g. 440001"
 												className={inputClasses}
 											/>
 										</div>
@@ -711,7 +708,7 @@ export function BrandIntegration() {
 												required
 												value={form.latitude}
 												onChange={handleChange}
-												placeholder="e.g. 23.241999"
+												placeholder="e.g. 21.145800"
 												className={inputClasses}
 											/>
 										</div>
@@ -727,7 +724,7 @@ export function BrandIntegration() {
 												required
 												value={form.longitude}
 												onChange={handleChange}
-												placeholder="e.g. 69.666881"
+												placeholder="e.g. 79.088158"
 												className={inputClasses}
 											/>
 										</div>
